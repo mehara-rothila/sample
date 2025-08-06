@@ -27,6 +27,60 @@ import {
   Sun
 } from 'lucide-react';
 
+// Define a type for the language codes
+type Language = 'en' | 'si' | 'ta';
+
+// Define a type for the structure of a single translation
+interface Translation {
+  title: string;
+  subtitle: string;
+  tagline: string;
+  bookAppointment: string;
+  threeWays: string;
+  navigation: {
+    bookService: string;
+    checkStatus: string;
+    documents: string;
+    contactGN: string;
+  };
+  accessMethods: {
+    mobileWeb: { title: string; description: string; };
+    sms: { title: string; description: string; };
+    voice: { title: string; description: string; };
+  };
+  services: {
+    descriptions: Record<string, string>;
+  };
+  stats: {
+    gnOffices: string;
+    servicesAvailable: string;
+    appointmentsToday: string;
+    happyCitizens: string;
+  };
+  footer: {
+    government: string;
+    ministry: string;
+    divisional: string;
+    network: string;
+    quickLinks: string;
+    serviceGuidelines: string;
+    documentRequirements: string;
+    officeLocations: string;
+    faqHelp: string;
+    contactInfo: string;
+    hotline: string;
+    smsHelp: string;
+    email: string;
+    systemStatus: string;
+    status: string;
+    online: string;
+    version: string;
+    updated: string;
+    copyright: string;
+  };
+}
+
+
 // Types for our services
 interface Service {
   id: string;
@@ -90,7 +144,8 @@ const LotusFlower = ({ className = "w-8 h-8" }) => (
 
 export default function GovLinkPortal() {
   const [activeTab, setActiveTab] = useState('services');
-  const [activeLanguage, setActiveLanguage] = useState('en');
+  // FIX: Use the specific Language type for the state
+  const [activeLanguage, setActiveLanguage] = useState<Language>('en');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Apply dark mode class to document root
@@ -102,8 +157,8 @@ export default function GovLinkPortal() {
     }
   }, [isDarkMode]);
 
-  // Complete translation object
-  const translations = {
+  // FIX: Type the translations object with Record<Language, Translation>
+  const translations: Record<Language, Translation> = {
     en: {
       title: 'Welcome to GovLink Sri Lanka',
       subtitle: 'Skip the queues, save your time. Book your GN office appointment online, submit your documents ahead, and complete your service in one visit.',
@@ -299,7 +354,8 @@ export default function GovLinkPortal() {
   };
 
   // Helper function to get current translation
-  const t = translations[activeLanguage] || translations.en;
+  // This line is now type-safe because TypeScript knows activeLanguage is a key of translations.
+  const t = translations[activeLanguage];
 
   const services: Service[] = [
     {
@@ -394,12 +450,14 @@ export default function GovLinkPortal() {
   ];
 
   const handleBookService = (serviceId: string) => {
-    alert(`Booking ${serviceId.replace('-', ' ')} - This would navigate to booking form`);
+    // A custom modal would be better than an alert in a real app
+    console.log(`Booking ${serviceId.replace('-', ' ')} - This would navigate to booking form`);
   };
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
-    alert(`Switching to ${tab} section`);
+     // A custom modal would be better than an alert in a real app
+    console.log(`Switching to ${tab} section`);
   };
 
   return (
@@ -481,7 +539,7 @@ export default function GovLinkPortal() {
                   ].map((lang) => (
                     <button
                       key={lang.code}
-                      onClick={() => setActiveLanguage(lang.code)}
+                      onClick={() => setActiveLanguage(lang.code as Language)}
                       className={`
                         px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
                         backdrop-blur-xl border
