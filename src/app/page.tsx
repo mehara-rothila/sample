@@ -550,7 +550,7 @@ export default function GovLinkPortal() {
                     <Phone className="w-3 h-3" /> Hotline: 1919 (24/7)
                   </p>
                   <p className="flex items-center gap-2">
-                    <MessageSquare className="w-3 h-3" /> SMS: Send "HELP" to 1234
+                    <MessageSquare className="w-3 h-3" /> SMS: Send &quot;HELP&quot; to 1234
                   </p>
                   <p className="flex items-center gap-2">
                     <Mail className="w-3 h-3" /> support@govlink.lk
