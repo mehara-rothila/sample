@@ -22,7 +22,6 @@ import {
   MapPin,
   BookOpen,
   ChevronRight,
-  Award,
   Zap,
   Moon,
   Sun
@@ -46,6 +45,49 @@ interface AccessMethod {
   description: string;
 }
 
+// Lotus flower component
+const LotusFlower = ({ className = "w-8 h-8" }) => (
+  <svg className={className} viewBox="0 0 100 100">
+    {/* Outer layer petals */}
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(36 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(72 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(108 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(144 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(180 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(216 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(252 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(288 50 50)"/>
+    <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(324 50 50)"/>
+
+    {/* Middle layer petals */}
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(18 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(54 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(90 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(126 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(162 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(198 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(234 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(270 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(306 50 50)"/>
+    <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(342 50 50)"/>
+
+    {/* Inner petals */}
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1"/>
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(45 50 50)"/>
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(90 50 50)"/>
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(135 50 50)"/>
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(180 50 50)"/>
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(225 50 50)"/>
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(270 50 50)"/>
+    <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(315 50 50)"/>
+
+    {/* Center */}
+    <circle cx="50" cy="50" r="7" fill="#ffd54f"/>
+    <circle cx="50" cy="50" r="3" fill="#ff8f00"/>
+  </svg>
+);
+
 export default function GovLinkPortal() {
   const [activeTab, setActiveTab] = useState('services');
   const [activeLanguage, setActiveLanguage] = useState('en');
@@ -59,6 +101,42 @@ export default function GovLinkPortal() {
       document.documentElement.classList.remove('dark');
     }
   }, [isDarkMode]);
+
+  // Helper function to get service name based on active language
+  const getServiceName = (service: Service) => {
+    switch (activeLanguage) {
+      case 'si':
+        return service.namesSi;
+      case 'ta':
+        return service.namesTa;
+      default:
+        return service.name;
+    }
+  };
+
+  // Helper function to get page title based on active language
+  const getPageTitle = () => {
+    switch (activeLanguage) {
+      case 'si':
+        return 'GovLink ශ්‍රී ලංකාවට සාදරයෙන් පිළිගන්නවා';
+      case 'ta':
+        return 'GovLink இலங்கைக்கு வரவேற்கிறோம்';
+      default:
+        return 'Welcome to GovLink Sri Lanka';
+    }
+  };
+
+  // Helper function to get page subtitle based on active language
+  const getPageSubtitle = () => {
+    switch (activeLanguage) {
+      case 'si':
+        return 'පෝලිම් මග හරින්න, ඔබගේ වෙලාව ගිණිකරන්න. ඔබගේ GN කාර්යාල හමුවීම ඔන්ලයින්හි වෙන්කරන්න, ඔබගේ ලිඛිත පූර්ව ඉදිරිපත් කරන්න, සහ එක් සංචාරයකින් ඔබගේ සේවාව සම්පූර්ණ කරන්න.';
+      case 'ta':
+        return 'வரிசையைத் தவிர்க்கவும், உங்கள் நேரத்தை மிச்சப்படுத்துங்கள். உங்கள் GN அலுவலக சந்திப்பை ஆன்லைனில் முன்பதிவு செய்யுங்கள், உங்கள் ஆவணங்களை முன்கூட்டியே சமர்ப்பிக்கவும், ஒரு வருகையிலேயே உங்கள் சேவையை முடிக்கவும்.';
+      default:
+        return 'Skip the queues, save your time. Book your GN office appointment online, submit your documents ahead, and complete your service in one visit.';
+    }
+  };
 
   const services: Service[] = [
     {
@@ -203,10 +281,10 @@ export default function GovLinkPortal() {
               <div className="flex items-center gap-4">
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center backdrop-blur-xl border ${
                   isDarkMode
-                    ? 'bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-600/20 border-white/10'
-                    : 'bg-gradient-to-br from-yellow-400 to-amber-500 shadow-lg shadow-amber-500/30 border-white/20'
+                    ? 'bg-gradient-to-br from-slate-800/80 to-gray-800/80 shadow-lg shadow-pink-600/20 border-pink-500/30'
+                    : 'bg-gradient-to-br from-white/90 to-gray-100/90 shadow-lg shadow-pink-500/20 border-pink-300/40'
                 }`}>
-                  <Award className="w-8 h-8 text-white" />
+                  <LotusFlower className="w-12 h-12" />
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold text-white tracking-tight">GovLink</h1>
@@ -223,7 +301,7 @@ export default function GovLinkPortal() {
                   onClick={() => setIsDarkMode(!isDarkMode)}
                   className={`p-2.5 rounded-full transition-all duration-300 backdrop-blur-xl border ${
                     isDarkMode
-                      ? 'bg-slate-700/50 border-white/10 hover:bg-slate-600/50 text-amber-400'
+                      ? 'bg-slate-700/50 border-white/10 hover:bg-slate-600/50 text-red-400'
                       : 'bg-white/20 border-white/20 hover:bg-white/30 text-yellow-300'
                   }`}
                   aria-label="Toggle dark mode"
@@ -246,7 +324,7 @@ export default function GovLinkPortal() {
                         backdrop-blur-xl border
                         ${activeLanguage === lang.code
                           ? isDarkMode
-                            ? 'bg-gradient-to-r from-amber-500/80 to-orange-600/80 text-white border-white/20 shadow-lg shadow-amber-600/20'
+                            ? 'bg-gradient-to-r from-red-500/80 to-rose-600/80 text-white border-white/20 shadow-lg shadow-red-600/20'
                             : 'bg-gradient-to-r from-yellow-400/90 to-amber-500/90 text-white border-white/30 shadow-lg shadow-amber-500/30'
                           : isDarkMode
                             ? 'bg-slate-800/50 text-gray-300 border-white/5 hover:bg-slate-700/50 hover:border-white/10'
@@ -280,10 +358,10 @@ export default function GovLinkPortal() {
                     flex items-center gap-2 border-b-2
                     ${activeTab === tab.id
                       ? isDarkMode
-                        ? 'bg-gradient-to-t from-amber-900/30 to-transparent text-amber-400 border-amber-500'
+                        ? 'bg-gradient-to-t from-red-900/30 to-transparent text-red-400 border-red-500'
                         : 'bg-gradient-to-t from-red-50/50 to-transparent text-red-700 border-amber-400'
                       : isDarkMode
-                        ? 'text-gray-400 border-transparent hover:text-amber-400 hover:bg-slate-700/30'
+                        ? 'text-gray-400 border-transparent hover:text-red-400 hover:bg-slate-700/30'
                         : 'text-gray-600 border-transparent hover:text-red-600 hover:bg-red-50/30'
                     }
                   `}
@@ -306,58 +384,19 @@ export default function GovLinkPortal() {
           }`}>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-48 h-auto mb-2">
-                <svg className="w-44 h-44" viewBox="0 0 100 100">
-                  {/* Outer layer petals */}
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(36 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(72 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(108 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(144 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(180 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(216 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(252 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(288 50 50)"/>
-                  <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b" transform="rotate(324 50 50)"/>
-
-                  {/* Middle layer petals */}
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(18 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(54 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(90 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(126 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(162 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(198 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(234 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(270 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(306 50 50)"/>
-                  <path d="M50,25 Q42,37 46,50 Q50,47 54,50 Q58,37 50,25 Z" fill="#e91e63" transform="rotate(342 50 50)"/>
-
-                  {/* Inner petals */}
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1"/>
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(45 50 50)"/>
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(90 50 50)"/>
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(135 50 50)"/>
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(180 50 50)"/>
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(225 50 50)"/>
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(270 50 50)"/>
-                  <path d="M50,32 Q45,40 47,50 Q50,48 53,50 Q55,40 50,32 Z" fill="#f48fb1" transform="rotate(315 50 50)"/>
-
-                  {/* Center */}
-                  <circle cx="50" cy="50" r="7" fill="#ffd54f"/>
-                  <circle cx="50" cy="50" r="3" fill="#ff8f00"/>
-                </svg>
+                <LotusFlower className="w-44 h-44" />
               </div>
               <h2 className={`text-5xl font-bold bg-clip-text text-transparent mb-4 ${
                 isDarkMode
-                  ? 'bg-gradient-to-r from-amber-400 to-orange-500'
+                  ? 'bg-gradient-to-r from-red-400 to-rose-500'
                   : 'bg-gradient-to-r from-red-700 to-green-700'
               }`}>
-                Welcome to GovLink Sri Lanka
+                {getPageTitle()}
               </h2>
               <p className={`text-lg max-w-2xl mx-auto leading-relaxed ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               }`}>
-                Skip the queues, save your time. Book your GN office appointment online,
-                submit your documents ahead, and complete your service in one visit.
+                {getPageSubtitle()}
               </p>
             </div>
           </div>
@@ -369,7 +408,7 @@ export default function GovLinkPortal() {
                 key={service.id}
                 className={`group backdrop-blur-xl rounded-2xl p-6 shadow-xl border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col ${
                   isDarkMode
-                    ? 'bg-slate-800/60 border-white/10 hover:bg-slate-800/80 hover:border-amber-500/30'
+                    ? 'bg-slate-800/60 border-white/10 hover:bg-slate-800/80 hover:border-red-500/30'
                     : 'bg-white/60 border-white/50 hover:bg-white/80'
                 }`}
                 onClick={() => handleBookService(service.id)}
@@ -379,17 +418,17 @@ export default function GovLinkPortal() {
                 <div>
                   <div className={`flex items-center justify-center w-16 h-16 rounded-2xl mb-4 transition-all duration-300 ${
                     isDarkMode
-                      ? 'bg-gradient-to-br from-amber-600/20 to-orange-600/20 group-hover:from-amber-600/30 group-hover:to-orange-600/30'
+                      ? 'bg-gradient-to-br from-red-600/20 to-rose-600/20 group-hover:from-red-600/30 group-hover:to-rose-600/30'
                       : 'bg-gradient-to-br from-red-500/10 to-amber-500/10 group-hover:from-red-500/20 group-hover:to-amber-500/20'
                   }`}>
-                    <div className={isDarkMode ? 'text-amber-500' : 'text-red-600'}>
+                    <div className={isDarkMode ? 'text-red-500' : 'text-red-600'}>
                       {service.icon}
                     </div>
                   </div>
                   <h3 className={`text-xl font-semibold mb-2 ${
-                    isDarkMode ? 'text-amber-400' : 'text-red-700'
+                    isDarkMode ? 'text-red-400' : 'text-red-700'
                   }`}>
-                    {service.name}
+                    {getServiceName(service)}
                   </h3>
                   <p className={`text-sm mb-4 leading-relaxed ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
@@ -433,7 +472,7 @@ export default function GovLinkPortal() {
           }`}>
             <h3 className={`text-3xl font-bold text-center bg-clip-text text-transparent mb-8 ${
               isDarkMode
-                ? 'bg-gradient-to-r from-amber-400 to-orange-500'
+                ? 'bg-gradient-to-r from-red-400 to-rose-500'
                 : 'bg-gradient-to-r from-red-700 to-green-700'
             }`}>
               Three Ways to Book Your Appointment
@@ -445,18 +484,18 @@ export default function GovLinkPortal() {
                   key={method.id}
                   className={`text-center p-6 backdrop-blur-xl rounded-2xl border transition-all duration-300 ${
                     isDarkMode
-                      ? 'bg-slate-700/40 border-white/5 hover:bg-slate-700/60 hover:border-amber-500/30'
+                      ? 'bg-slate-700/40 border-white/5 hover:bg-slate-700/60 hover:border-red-500/30'
                       : 'bg-white/40 border-white/30 hover:bg-white/60 hover:border-amber-400/30'
                   }`}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className={`flex justify-center mb-4 ${
-                    isDarkMode ? 'text-amber-500' : 'text-amber-600'
+                    isDarkMode ? 'text-red-500' : 'text-amber-600'
                   }`}>
                     {method.icon}
                   </div>
                   <h4 className={`text-xl font-semibold mb-3 ${
-                    isDarkMode ? 'text-amber-400' : 'text-red-700'
+                    isDarkMode ? 'text-red-400' : 'text-red-700'
                   }`}>
                     {method.title}
                   </h4>
@@ -483,13 +522,13 @@ export default function GovLinkPortal() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className={`flex justify-center mb-3 ${
-                  isDarkMode ? 'text-amber-500' : 'text-amber-600'
+                  isDarkMode ? 'text-red-500' : 'text-amber-600'
                 }`}>
                   {stat.icon}
                 </div>
                 <div className={`text-3xl font-bold bg-clip-text text-transparent ${
                   isDarkMode
-                    ? 'bg-gradient-to-r from-amber-400 to-orange-500'
+                    ? 'bg-gradient-to-r from-red-400 to-rose-500'
                     : 'bg-gradient-to-r from-red-600 to-amber-600'
                 }`}>
                   {stat.value}
@@ -513,7 +552,7 @@ export default function GovLinkPortal() {
           <div className="max-w-7xl mx-auto px-4 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
-                <h4 className={isDarkMode ? 'text-amber-500 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
+                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
                   Government of Sri Lanka
                 </h4>
                 <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
@@ -523,7 +562,7 @@ export default function GovLinkPortal() {
                 </div>
               </div>
               <div>
-                <h4 className={isDarkMode ? 'text-amber-500 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
+                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
                   Quick Links
                 </h4>
                 <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
@@ -542,7 +581,7 @@ export default function GovLinkPortal() {
                 </div>
               </div>
               <div>
-                <h4 className={isDarkMode ? 'text-amber-500 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
+                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
                   Contact Information
                 </h4>
                 <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
@@ -558,7 +597,7 @@ export default function GovLinkPortal() {
                 </div>
               </div>
               <div>
-                <h4 className={isDarkMode ? 'text-amber-500 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
+                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
                   System Status
                 </h4>
                 <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
@@ -703,7 +742,7 @@ export default function GovLinkPortal() {
         }
 
         .dark nav button::after {
-          background: rgba(251, 191, 36, 0.5);
+          background: rgba(239, 68, 68, 0.5);
         }
 
         nav button:hover::after {
@@ -747,7 +786,7 @@ export default function GovLinkPortal() {
         }
 
         .dark .welcome-banner .text-5xl {
-          text-shadow: 2px 2px 10px rgba(251, 191, 36, 0.2);
+          text-shadow: 2px 2px 10px rgba(239, 68, 68, 0.2);
         }
 
         .grid.gap-6 > div,
@@ -763,7 +802,7 @@ export default function GovLinkPortal() {
         }
 
         .dark .grid.gap-6 > div .w-16.h-16 {
-          border: 1px solid rgba(251, 191, 36, 0.1);
+          border: 1px solid rgba(239, 68, 68, 0.1);
         }
 
         .grid.gap-6 > div:hover .w-16.h-16 {
@@ -772,7 +811,7 @@ export default function GovLinkPortal() {
         }
 
         .dark .grid.gap-6 > div:hover .w-16.h-16 {
-          border-color: rgba(251, 191, 36, 0.3);
+          border-color: rgba(239, 68, 68, 0.3);
         }
 
         .grid.gap-8 > div:hover {
@@ -806,7 +845,7 @@ export default function GovLinkPortal() {
 
         footer .text-white\\/80 > p:hover,
         footer .text-gray-400 > p:hover {
-          color: var(--color-primary-amber) !important;
+          color: #EF4444 !important;
           transform: translateX(4px);
         }
 
