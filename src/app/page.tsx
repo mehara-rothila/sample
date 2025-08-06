@@ -37,6 +37,11 @@ interface Translation {
   tagline: string;
   bookAppointment: string;
   threeWays: string;
+  aiSearch: {
+    title: string;
+    placeholder: string;
+    suggestions: string[];
+  };
   navigation: {
     bookService: string;
     checkStatus: string;
@@ -44,7 +49,7 @@ interface Translation {
     contactGN: string;
   };
   accessMethods: {
-    mobileWeb: { title: string; description: string; };
+    mobileWeb: { title: string; description:string; };
     sms: { title: string; description: string; };
     voice: { title: string; description: string; };
   };
@@ -144,11 +149,9 @@ const LotusFlower = ({ className = "w-8 h-8" }) => (
 
 export default function GovLinkPortal() {
   const [activeTab, setActiveTab] = useState('services');
-  // FIX: Use the specific Language type for the state
   const [activeLanguage, setActiveLanguage] = useState<Language>('en');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Apply dark mode class to document root
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -157,7 +160,6 @@ export default function GovLinkPortal() {
     }
   }, [isDarkMode]);
 
-  // FIX: Type the translations object with Record<Language, Translation>
   const translations: Record<Language, Translation> = {
     en: {
       title: 'Welcome to GovLink Sri Lanka',
@@ -165,6 +167,11 @@ export default function GovLinkPortal() {
       tagline: 'One appointment, one visit — GN services that actually work',
       bookAppointment: 'Book Appointment',
       threeWays: 'Three Ways to Book Your Appointment',
+      aiSearch: {
+        title: 'Ask questions, find services, and access information instantly. Your direct link to public services is here.',
+        placeholder: 'What documents do I need for marriage registration?',
+        suggestions: ['Passport Renewal', 'Business Registration', 'Marriage Certificate', 'Driving License'],
+      },
       navigation: {
         bookService: 'Book Service',
         checkStatus: 'Check Status',
@@ -229,6 +236,11 @@ export default function GovLinkPortal() {
       tagline: 'එක් හමුවීමක්, එක් සංචාරයක් — සැබවින්ම වැඩකරන ග්‍රාම නිලධාරි සේවා',
       bookAppointment: 'හමුවීම වෙන්කරන්න',
       threeWays: 'ඔබේ හමුවීම වෙන්කිරීමට ක්‍රම තුනක්',
+      aiSearch: {
+        title: 'ප්‍රශ්න අසන්න, සේවා සොයාගන්න, සහ තොරතුරු ක්ෂණිකව ලබාගන්න. රාජ්‍ය සේවා සඳහා ඔබේ සෘජු සබැඳිය මෙතැනයි.',
+        placeholder: 'විවාහ ලියාපදිංචිය සඳහා අවශ්‍ය ලියකියවිලි මොනවාද?',
+        suggestions: ['ගමන් බලපත්‍ර අලුත් කිරීම', 'ව්‍යාපාර ලියාපදිංචිය', 'විවාහ සහතිකය', 'රියදුරු බලපත්‍රය'],
+      },
       navigation: {
         bookService: 'සේවාව වෙන්කරන්න',
         checkStatus: 'තත්ත්වය පරීක්ෂා කරන්න',
@@ -293,6 +305,11 @@ export default function GovLinkPortal() {
       tagline: 'ஒரு சந்திப்பு, ஒரு வருகை — உண்மையில் வேலை செய்யும் கிராம அலுவலர் சேவைகள்',
       bookAppointment: 'சந்திப்பை முன்பதிவு செய்யுங்கள்',
       threeWays: 'உங்கள் சந்திப்பை முன்பதிவு செய்ய மூன்று வழிகள்',
+      aiSearch: {
+        title: 'கேள்விகளைக் கேளுங்கள், சேவைகளைக் கண்டறியுங்கள், மற்றும் தகவல்களை உடனடியாக அணுகுங்கள். பொது சேவைகளுக்கான உங்கள் நேரடி இணைப்பு இங்கே உள்ளது.',
+        placeholder: 'திருமணப் பதிவுக்கு என்ன ஆவணங்கள் தேவை?',
+        suggestions: ['கடவுச்சீட்டு புதுப்பித்தல்', 'வணிகப் பதிவு', 'திருமணச் சான்றிதழ்', 'சாரதி அனுமதிப்பத்திரம்'],
+      },
       navigation: {
         bookService: 'சேவையை முன்பதிவு செய்யுங்கள்',
         checkStatus: 'நிலையைச் சரிபார்க்கவும்',
@@ -353,8 +370,6 @@ export default function GovLinkPortal() {
     }
   };
 
-  // Helper function to get current translation
-  // This line is now type-safe because TypeScript knows activeLanguage is a key of translations.
   const t = translations[activeLanguage];
 
   const services: Service[] = [
@@ -450,13 +465,11 @@ export default function GovLinkPortal() {
   ];
 
   const handleBookService = (serviceId: string) => {
-    // A custom modal would be better than an alert in a real app
     console.log(`Booking ${serviceId.replace('-', ' ')} - This would navigate to booking form`);
   };
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
-     // A custom modal would be better than an alert in a real app
     console.log(`Switching to ${tab} section`);
   };
 
@@ -621,6 +634,56 @@ export default function GovLinkPortal() {
               </p>
             </div>
           </div>
+
+          {/* START: AI Search Section (Color Corrected) */}
+          <div className="mb-12">
+            <div className="text-center max-w-3xl mx-auto">
+              <h3 className={`text-2xl font-semibold mb-6 ${
+                isDarkMode ? 'text-rose-200/90' : 'text-rose-900/80'
+              }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                {t.aiSearch.title}
+              </h3>
+              
+              <div className={`relative flex items-center w-full p-2 rounded-3xl shadow-lg backdrop-blur-lg ${
+                isDarkMode
+                  ? 'bg-rose-950/40 border border-white/10'
+                  : 'bg-rose-100/50 border border-white/50'
+              }`}>
+                <input
+                  type="text"
+                  placeholder={t.aiSearch.placeholder}
+                  className={`w-full bg-transparent pl-5 pr-20 py-3 text-base focus:outline-none ${
+                    isDarkMode ? 'text-rose-100 placeholder:text-rose-200/40' : 'text-rose-900 placeholder:text-rose-800/50'
+                  }`}
+                  style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif' }}
+                />
+                <button className={`absolute right-2 top-2 bottom-2 w-14 rounded-2xl text-white flex items-center justify-center
+                  bg-gradient-to-b from-yellow-400 to-orange-500
+                  hover:scale-105 transition-transform duration-300 shadow-md shadow-orange-600/30
+                  focus:outline-none focus:ring-4 focus:ring-orange-400/50`}>
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+                {t.aiSearch.suggestions.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+                      backdrop-blur-sm border
+                      ${isDarkMode
+                        ? 'bg-rose-900/30 text-rose-200 border-rose-500/20 hover:bg-rose-900/60'
+                        : 'bg-white/50 text-rose-800 border-rose-200/30 hover:bg-white/80'
+                      }`}
+                    style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif' }}
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* END: AI Search Section */}
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
