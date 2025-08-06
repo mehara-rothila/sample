@@ -102,41 +102,204 @@ export default function GovLinkPortal() {
     }
   }, [isDarkMode]);
 
-  // Helper function to get service name based on active language
-  const getServiceName = (service: Service) => {
-    switch (activeLanguage) {
-      case 'si':
-        return service.namesSi;
-      case 'ta':
-        return service.namesTa;
-      default:
-        return service.name;
+  // Complete translation object
+  const translations = {
+    en: {
+      title: 'Welcome to GovLink Sri Lanka',
+      subtitle: 'Skip the queues, save your time. Book your GN office appointment online, submit your documents ahead, and complete your service in one visit.',
+      tagline: 'One appointment, one visit — GN services that actually work',
+      bookAppointment: 'Book Appointment',
+      threeWays: 'Three Ways to Book Your Appointment',
+      navigation: {
+        bookService: 'Book Service',
+        checkStatus: 'Check Status',
+        documents: 'Documents',
+        contactGN: 'Contact GN'
+      },
+      accessMethods: {
+        mobileWeb: {
+          title: 'Mobile App & Web',
+          description: 'Use your smartphone or computer to book appointments, upload documents, and track your application status.'
+        },
+        sms: {
+          title: 'SMS Booking',
+          description: 'Send "BOOK" to 1234 and follow simple SMS prompts. Perfect for feature phones.'
+        },
+        voice: {
+          title: 'Voice Call (IVR)',
+          description: 'Call our automated booking line and use your keypad to select services. Available 24/7.'
+        }
+      },
+      services: {
+        descriptions: {
+          'income-certificate': 'Required for welfare applications, scholarships, and government benefits.',
+          'birth-certificate': 'Official birth registration and certificate collection.',
+          'residence-certificate': 'Proof of residence for school admissions and job applications.',
+          'character-certificate': 'Police clearance and character verification for employment.',
+          'land-registry': 'Land ownership verification and property documentation.',
+          'other-services': 'Marriage certificates, business registrations, and more.'
+        }
+      },
+      stats: {
+        gnOffices: 'GN Offices',
+        servicesAvailable: 'Services Available',
+        appointmentsToday: 'Appointments Today',
+        happyCitizens: 'Happy Citizens'
+      },
+      footer: {
+        government: 'Government of Sri Lanka',
+        ministry: 'Ministry of Home Affairs',
+        divisional: 'Divisional Secretariat Services',
+        network: 'Grama Niladhari Network',
+        quickLinks: 'Quick Links',
+        serviceGuidelines: 'Service Guidelines',
+        documentRequirements: 'Document Requirements',
+        officeLocations: 'Office Locations',
+        faqHelp: 'FAQ & Help',
+        contactInfo: 'Contact Information',
+        hotline: 'Hotline: 1919 (24/7)',
+        smsHelp: 'SMS: Send "HELP" to 1234',
+        email: 'support@govlink.lk',
+        systemStatus: 'System Status',
+        status: 'Status:',
+        online: 'Online',
+        version: 'Version: 2.1.0',
+        updated: 'Updated: Aug 2025',
+        copyright: '© 2025 GovLink Sri Lanka. Built with care for the people of Sri Lanka.'
+      }
+    },
+    si: {
+      title: 'GovLink ශ්‍රී ලංකාවට සාදරයෙන් පිළිගන්නවා',
+      subtitle: 'පෝලිම් මග හරින්න, ඔබගේ වෙලාව ගිණිකරන්න. ඔබගේ ග්‍රාම නිලධාරි කාර්යාල හමුවීම ඔන්ලයින්හි වෙන්කරන්න, ඔබගේ ලිඛිත පූර්ව ඉදිරිපත් කරන්න, සහ එක් සංචාරයකින් ඔබගේ සේවාව සම්පූර්ණ කරන්න.',
+      tagline: 'එක් හමුවීමක්, එක් සංචාරයක් — සැබවින්ම වැඩකරන ග්‍රාම නිලධාරි සේවා',
+      bookAppointment: 'හමුවීම වෙන්කරන්න',
+      threeWays: 'ඔබේ හමුවීම වෙන්කිරීමට ක්‍රම තුනක්',
+      navigation: {
+        bookService: 'සේවාව වෙන්කරන්න',
+        checkStatus: 'තත්ත්වය පරීක්ෂා කරන්න',
+        documents: 'ලිඛිත',
+        contactGN: 'ග්‍රාම නිලධාරි අමතන්න'
+      },
+      accessMethods: {
+        mobileWeb: {
+          title: 'ජංගම යෙදුම සහ වෙබ්',
+          description: 'ඔබේ ස්මාර්ට් ජංගම දුරකථනය හෝ පරිගණකය භාවිතා කරන්න හමුවීම් වෙන්කිරීමට, ලිඛිත උඩුගත කිරීමට, සහ ඔබේ අයදුම්පත් තත්ත්වය නිරීක්ෂණය කිරීමට.'
+        },
+        sms: {
+          title: 'කෙටි පණිවිඩ වෙන්කිරීම',
+          description: '"BOOK" යන්න 1234 ට යවා සරල කෙටි පණිවිඩ උපදේශන අනුගමනය කරන්න. සාමාන්‍ය ජංගම දුරකථන සඳහා හොඳ.'
+        },
+        voice: {
+          title: 'හඬ ඇමතුම (IVR)',
+          description: 'අපගේ ස්වයංක්‍රීය වෙන්කිරීම් රේඛාවට ඇමතුම් කර ඔබේ යතුරු පිට භාවිතා කර සේවා තේරීමට. 24/7 ලබා ගත හැක.'
+        }
+      },
+      services: {
+        descriptions: {
+          'income-certificate': 'සුභසාධන අයදුම්, ශිෂ්‍යත්ව, සහ ආන්ඩු ප්‍රතිලාභ සඳහා අවශ්‍ය.',
+          'birth-certificate': 'නිල උප්පැන්න ලියාපදිංචිය සහ සහතික එකතු කිරීම.',
+          'residence-certificate': 'පාසල් ඇතුළත් වීම් සහ රැකියා අයදුම් සඳහා පදිංචි සාක්ෂිය.',
+          'character-certificate': 'රැකියා සඳහා පොලිස් නිෂ්කාශනය සහ චරිත සත්‍යාපනය.',
+          'land-registry': 'ඉඩම් හිමිකාරිත්ව සත්‍යාපනය සහ දේපළ ලේඛන.',
+          'other-services': 'විවාහ සහතික, ව්‍යාපාර ලියාපදිංචිකරණ, සහ තවත්.'
+        }
+      },
+      stats: {
+        gnOffices: 'ග්‍රාම නිලධාරි කාර්යාල',
+        servicesAvailable: 'ලබා ගත හැකි සේවා',
+        appointmentsToday: 'අද හමුවීම්',
+        happyCitizens: 'සතුටු පුරවැසියන්'
+      },
+      footer: {
+        government: 'ශ්‍රී ලංකා ජනරජයේ රජය',
+        ministry: 'ස්වදේශ කටයුතු අමාත්‍යාංශය',
+        divisional: 'ප්‍රාදේශීය ලේකම් සේවා',
+        network: 'ග්‍රාම නිලධාරි ජාලය',
+        quickLinks: 'ඉක්මන් සබැඳි',
+        serviceGuidelines: 'සේවා මාර්ගෝපදේශ',
+        documentRequirements: 'ලේඛන අවශ්‍යතා',
+        officeLocations: 'කාර්යාල ස්ථාන',
+        faqHelp: 'නිතර අසන ප්‍රශ්න සහ උදව්',
+        contactInfo: 'සම්බන්ධතා තොරතුරු',
+        hotline: 'හොට්ලයින්: 1919 (24/7)',
+        smsHelp: 'කෙටි පණිවිඩ: "HELP" යන්න 1234 ට යවන්න',
+        email: 'support@govlink.lk',
+        systemStatus: 'පද්ධති තත්ත්වය',
+        status: 'තත්ත්වය:',
+        online: 'සබැඳි',
+        version: 'අනුවාදය: 2.1.0',
+        updated: 'යාවත්කාලීන: අගෝස්තු 2025',
+        copyright: '© 2025 GovLink ශ්‍රී ලංකාව. ශ්‍රී ලංකා ජනතාවට ප්‍රේමයෙන් ගොඩනගන ලද.'
+      }
+    },
+    ta: {
+      title: 'GovLink இலங்கைக்கு வரவேற்கிறோம்',
+      subtitle: 'வரிசையைத் தவிர்க்கவும், உங்கள் நேரத்தை மிச்சப்படுத்துங்கள். உங்கள் கிராம அலுவலர் அலுவலக சந்திப்பை ஆன்லைனில் முன்பதிவு செய்யுங்கள், உங்கள் ஆவணங்களை முன்கூட்டியே சமர்ப்பிக்கவும், ஒரு வருகையிலேயே உங்கள் சேவையை முடிக்கவும்.',
+      tagline: 'ஒரு சந்திப்பு, ஒரு வருகை — உண்மையில் வேலை செய்யும் கிராம அலுவலர் சேவைகள்',
+      bookAppointment: 'சந்திப்பை முன்பதிவு செய்யுங்கள்',
+      threeWays: 'உங்கள் சந்திப்பை முன்பதிவு செய்ய மூன்று வழிகள்',
+      navigation: {
+        bookService: 'சேவையை முன்பதிவு செய்யுங்கள்',
+        checkStatus: 'நிலையைச் சரிபார்க்கவும்',
+        documents: 'ஆவணங்கள்',
+        contactGN: 'கிராம அலுவலரைத் தொடர்பு கொள்ளுங்கள்'
+      },
+      accessMethods: {
+        mobileWeb: {
+          title: 'மொபைல் ஆப் & வெப்',
+          description: 'சந்திப்புகளை முன்பதிவு செய்ய, ஆவணங்களை பதிவேற்ற மற்றும் உங்கள் விண்ணப்ப நிலையை கண்காணிக்க உங்கள் ஸ்மார்ட்போன் அல்லது கணினியைப் பயன்படுத்துங்கள்.'
+        },
+        sms: {
+          title: 'SMS முன்பதிவு',
+          description: '"BOOK" என்று 1234 க்கு அனுப்பி எளிய SMS குறிப்புகளைப் பின்பற்றவும். சாதாரண மொபைல் போன்களுக்கு ஏற்றது.'
+        },
+        voice: {
+          title: 'குரல் அழைப்பு (IVR)',
+          description: 'எங்கள் தானியங்கி முன்பதிவு வரியை அழைத்து உங்கள் கீபேடைப் பயன்படுத்தி சேவைகளைத் தேர்ந்தெடுக்கவும். 24/7 கிடைக்கும்.'
+        }
+      },
+      services: {
+        descriptions: {
+          'income-certificate': 'நல்வாழ்வு விண்ணப்பங்கள், உதவித்தொகைகள் மற்றும் அரசு நலன்களுக்குத் தேவை.',
+          'birth-certificate': 'அதிகாரப்பூர்வ பிறப்புப் பதிவு மற்றும் சான்றிதழ் சேகரிப்பு.',
+          'residence-certificate': 'பள்ளி அட்மிஷன் மற்றும் வேலை விண்ணப்பங்களுக்கு வசிப்பிட சான்று.',
+          'character-certificate': 'வேலைக்காக காவல்துறை அனுமதி மற்றும் குணாதிசய சரிபார்ப்பு.',
+          'land-registry': 'நில உரிமை சரிபார்ப்பு மற்றும் சொத்து ஆவணப்படுத்தல்.',
+          'other-services': 'திருமண சான்றிதழ்கள், வணிக பதிவுகள் மற்றும் மேலும்.'
+        }
+      },
+      stats: {
+        gnOffices: 'கிராம அலுவலர் அலுவலகங்கள்',
+        servicesAvailable: 'கிடைக்கும் சேவைகள்',
+        appointmentsToday: 'இன்று சந்திப்புகள்',
+        happyCitizens: 'மகிழ்ச்சியான குடிமக்கள்'
+      },
+      footer: {
+        government: 'இலங்கை அரசாங்கம்',
+        ministry: 'உள்துறை அமைச்சகம்',
+        divisional: 'பிராந்திய செயலக சேவைகள்',
+        network: 'கிராம அலுவலர் நெட்வொர்க்',
+        quickLinks: 'விரைவு இணைப்புகள்',
+        serviceGuidelines: 'சேவை வழிகாட்டுதல்கள்',
+        documentRequirements: 'ஆவண தேவைகள்',
+        officeLocations: 'அலுவலக இடங்கள்',
+        faqHelp: 'அடிக்கடி கேட்கப்படும் கேள்விகள் & உதவி',
+        contactInfo: 'தொடர்பு தகவல்',
+        hotline: 'ஹாட்லைன்: 1919 (24/7)',
+        smsHelp: 'SMS: "HELP" என்று 1234 க்கு அனுப்பவும்',
+        email: 'support@govlink.lk',
+        systemStatus: 'கணினி நிலை',
+        status: 'நிலை:',
+        online: 'ஆன்லைன்',
+        version: 'பதிப்பு: 2.1.0',
+        updated: 'புதுப்பிக்கப்பட்டது: ஆகஸ்ட் 2025',
+        copyright: '© 2025 GovLink இலங்கை. இலங்கை மக்களுக்காக அன்புடன் உருவாக்கப்பட்டது.'
+      }
     }
   };
 
-  // Helper function to get page title based on active language
-  const getPageTitle = () => {
-    switch (activeLanguage) {
-      case 'si':
-        return 'GovLink ශ්‍රී ලංකාවට සාදරයෙන් පිළිගන්නවා';
-      case 'ta':
-        return 'GovLink இலங்கைக்கு வரவேற்கிறோம்';
-      default:
-        return 'Welcome to GovLink Sri Lanka';
-    }
-  };
-
-  // Helper function to get page subtitle based on active language
-  const getPageSubtitle = () => {
-    switch (activeLanguage) {
-      case 'si':
-        return 'පෝලිම් මග හරින්න, ඔබගේ වෙලාව ගිණිකරන්න. ඔබගේ GN කාර්යාල හමුවීම ඔන්ලයින්හි වෙන්කරන්න, ඔබගේ ලිඛිත පූර්ව ඉදිරිපත් කරන්න, සහ එක් සංචාරයකින් ඔබගේ සේවාව සම්පූර්ණ කරන්න.';
-      case 'ta':
-        return 'வரிசையைத் தவிர்க்கவும், உங்கள் நேரத்தை மிச்சப்படுத்துங்கள். உங்கள் GN அலுவலக சந்திப்பை ஆன்லைனில் முன்பதிவு செய்யுங்கள், உங்கள் ஆவணங்களை முன்கூட்டியே சமர்ப்பிக்கவும், ஒரு வருகையிலேயே உங்கள் சேவையை முடிக்கவும்.';
-      default:
-        return 'Skip the queues, save your time. Book your GN office appointment online, submit your documents ahead, and complete your service in one visit.';
-    }
-  };
+  // Helper function to get current translation
+  const t = translations[activeLanguage] || translations.en;
 
   const services: Service[] = [
     {
@@ -198,36 +361,36 @@ export default function GovLinkPortal() {
   const accessMethods: AccessMethod[] = [
     {
       id: 'mobile-web',
-      title: 'Mobile App & Web',
+      title: t.accessMethods.mobileWeb.title,
       icon: <Smartphone className="w-16 h-16" />,
-      description: 'Use your smartphone or computer to book appointments, upload documents, and track your application status.'
+      description: t.accessMethods.mobileWeb.description
     },
     {
       id: 'sms',
-      title: 'SMS Booking',
+      title: t.accessMethods.sms.title,
       icon: <MessageSquare className="w-16 h-16" />,
-      description: 'Send "BOOK" to 1234 and follow simple SMS prompts. Perfect for feature phones.'
+      description: t.accessMethods.sms.description
     },
     {
       id: 'voice',
-      title: 'Voice Call (IVR)',
+      title: t.accessMethods.voice.title,
       icon: <Phone className="w-16 h-16" />,
-      description: 'Call our automated booking line and use your keypad to select services. Available 24/7.'
+      description: t.accessMethods.voice.description
     }
   ];
 
   const navigationTabs = [
-    { id: 'services', label: 'Book Service', icon: <Calendar className="w-4 h-4" /> },
-    { id: 'status', label: 'Check Status', icon: <Search className="w-4 h-4" /> },
-    { id: 'documents', label: 'Documents', icon: <FileCheck className="w-4 h-4" /> },
-    { id: 'contact', label: 'Contact GN', icon: <Phone className="w-4 h-4" /> }
+    { id: 'services', label: t.navigation.bookService, icon: <Calendar className="w-4 h-4" /> },
+    { id: 'status', label: t.navigation.checkStatus, icon: <Search className="w-4 h-4" /> },
+    { id: 'documents', label: t.navigation.documents, icon: <FileCheck className="w-4 h-4" /> },
+    { id: 'contact', label: t.navigation.contactGN, icon: <Phone className="w-4 h-4" /> }
   ];
 
   const stats = [
-    { label: 'GN Offices', value: '14,022', icon: <Building2 className="w-8 h-8" /> },
-    { label: 'Services Available', value: '25+', icon: <ClipboardList className="w-8 h-8" /> },
-    { label: 'Appointments Today', value: '1,247', icon: <Calendar className="w-8 h-8" /> },
-    { label: 'Happy Citizens', value: '50K+', icon: <Users className="w-8 h-8" /> }
+    { label: t.stats.gnOffices, value: '14,022', icon: <Building2 className="w-8 h-8" /> },
+    { label: t.stats.servicesAvailable, value: '25+', icon: <ClipboardList className="w-8 h-8" /> },
+    { label: t.stats.appointmentsToday, value: '1,247', icon: <Calendar className="w-8 h-8" /> },
+    { label: t.stats.happyCitizens, value: '50K+', icon: <Users className="w-8 h-8" /> }
   ];
 
   const handleBookService = (serviceId: string) => {
@@ -288,8 +451,8 @@ export default function GovLinkPortal() {
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold text-white tracking-tight">GovLink</h1>
-                  <p className={`text-sm italic ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
-                    One appointment, one visit — GN services that actually work
+                  <p className={`text-sm italic ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                    {t.tagline}
                   </p>
                 </div>
               </div>
@@ -390,13 +553,13 @@ export default function GovLinkPortal() {
                 isDarkMode
                   ? 'bg-gradient-to-r from-red-400 to-rose-500'
                   : 'bg-gradient-to-r from-red-700 to-green-700'
-              }`}>
-                {getPageTitle()}
+              }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.2' }}>
+                {t.title}
               </h2>
               <p className={`text-lg max-w-2xl mx-auto leading-relaxed ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              }`}>
-                {getPageSubtitle()}
+              }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                {t.subtitle}
               </p>
             </div>
           </div>
@@ -427,13 +590,13 @@ export default function GovLinkPortal() {
                   </div>
                   <h3 className={`text-xl font-semibold mb-2 ${
                     isDarkMode ? 'text-red-400' : 'text-red-700'
-                  }`}>
-                    {getServiceName(service)}
+                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                    {activeLanguage === 'si' ? service.namesSi : activeLanguage === 'ta' ? service.namesTa : service.name}
                   </h3>
                   <p className={`text-sm mb-4 leading-relaxed ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>
-                    {service.description}
+                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                    {t.services.descriptions[service.id] || service.description}
                   </p>
                 </div>
 
@@ -455,8 +618,8 @@ export default function GovLinkPortal() {
                       ? 'bg-gradient-to-r from-emerald-500 to-green-400 shadow-emerald-500/20 hover:shadow-green-400/30'
                       : 'bg-gradient-to-r from-emerald-700 to-green-600 shadow-emerald-700/30 hover:shadow-green-600/40'
                     }
-                  `}>
-                    Book Appointment
+                  `} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif' }}>
+                    {t.bookAppointment}
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -474,8 +637,8 @@ export default function GovLinkPortal() {
               isDarkMode
                 ? 'bg-gradient-to-r from-red-400 to-rose-500'
                 : 'bg-gradient-to-r from-red-700 to-green-700'
-            }`}>
-              Three Ways to Book Your Appointment
+            }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.2' }}>
+              {t.threeWays}
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -496,12 +659,12 @@ export default function GovLinkPortal() {
                   </div>
                   <h4 className={`text-xl font-semibold mb-3 ${
                     isDarkMode ? 'text-red-400' : 'text-red-700'
-                  }`}>
+                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
                     {method.title}
                   </h4>
                   <p className={`leading-relaxed ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>
+                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
                     {method.description}
                   </p>
                 </div>
@@ -552,61 +715,61 @@ export default function GovLinkPortal() {
           <div className="max-w-7xl mx-auto px-4 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
-                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
-                  Government of Sri Lanka
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                  {t.footer.government}
                 </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
-                  <p>Ministry of Home Affairs</p>
-                  <p>Divisional Secretariat Services</p>
-                  <p>Grama Niladhari Network</p>
+                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                  <p>{t.footer.ministry}</p>
+                  <p>{t.footer.divisional}</p>
+                  <p>{t.footer.network}</p>
                 </div>
               </div>
               <div>
-                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
-                  Quick Links
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                  {t.footer.quickLinks}
                 </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
+                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
                   <p className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
-                    <BookOpen className="w-3 h-3" /> Service Guidelines
-                  </p>
-                  <p className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
-                    <FileText className="w-3 h-3" /> Document Requirements
+                    <BookOpen className="w-3 h-3" /> {t.footer.serviceGuidelines}
                   </p>
                   <p className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
-                    <MapPin className="w-3 h-3" /> Office Locations
+                    <FileText className="w-3 h-3" /> {t.footer.documentRequirements}
                   </p>
                   <p className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
-                    <HelpCircle className="w-3 h-3" /> FAQ & Help
+                    <MapPin className="w-3 h-3" /> {t.footer.officeLocations}
                   </p>
-                </div>
-              </div>
-              <div>
-                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
-                  Contact Information
-                </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
-                  <p className="flex items-center gap-2">
-                    <Phone className="w-3 h-3" /> Hotline: 1919 (24/7)
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <MessageSquare className="w-3 h-3" /> SMS: Send &quot;HELP&quot; to 1234
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Mail className="w-3 h-3" /> support@govlink.lk
+                  <p className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
+                    <HelpCircle className="w-3 h-3" /> {t.footer.faqHelp}
                   </p>
                 </div>
               </div>
               <div>
-                <h4 className={isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}>
-                  System Status
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                  {t.footer.contactInfo}
                 </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`}>
+                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                  <p className="flex items-center gap-2">
+                    <Phone className="w-3 h-3" /> {t.footer.hotline}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <MessageSquare className="w-3 h-3" /> {t.footer.smsHelp}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Mail className="w-3 h-3" /> {t.footer.email}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                  {t.footer.systemStatus}
+                </h4>
+                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
                   <p className="flex items-center gap-2">
                     <Zap className="w-3 h-3 text-green-400" />
-                    Status: <span className="text-green-400">Online</span>
+                    {t.footer.status} <span className="text-green-400">{t.footer.online}</span>
                   </p>
-                  <p>Version: 2.1.0</p>
-                  <p>Updated: Aug 2025</p>
+                  <p>{t.footer.version}</p>
+                  <p>{t.footer.updated}</p>
                 </div>
               </div>
             </div>
@@ -614,8 +777,8 @@ export default function GovLinkPortal() {
             <div className={`border-t mt-8 pt-6 text-center ${
               isDarkMode ? 'border-white/10' : 'border-white/20'
             }`}>
-              <p className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-white/60'}`}>
-                © 2025 GovLink Sri Lanka. Built with care for the people of Sri Lanka.
+              <p className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-white/60'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                {t.footer.copyright}
               </p>
             </div>
           </div>
@@ -624,6 +787,9 @@ export default function GovLinkPortal() {
 
       {/* Embedded Global Styles */}
       <style jsx global>{`
+        /* Import Google Fonts for better Sinhala and Tamil support */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
         /* GovLink Portal - Enhanced with Dark Mode Support */
 
         /* 1. Foundational Styles & Custom Properties
@@ -637,6 +803,8 @@ export default function GovLinkPortal() {
           --color-text-dark: #1F2937;
           --color-text-light: #F8FAFC;
           --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+          --font-sinhala: 'Noto Sans Sinhala', serif;
+          --font-tamil: 'Noto Sans Tamil', serif;
         }
 
         body {
@@ -648,6 +816,28 @@ export default function GovLinkPortal() {
 
         .dark {
           color-scheme: dark;
+        }
+
+        /* Enhanced font rendering for Sinhala and Tamil */
+        .sinhala-text {
+          font-family: var(--font-sinhala);
+          line-height: 1.6;
+          letter-spacing: 0.025em;
+        }
+
+        .tamil-text {
+          font-family: var(--font-tamil);
+          line-height: 1.6;
+          letter-spacing: 0.025em;
+        }
+
+        /* Ensure proper rendering for complex scripts */
+        .sinhala-text, .tamil-text {
+          text-rendering: optimizeLegibility;
+          -webkit-font-feature-settings: "kern" 1;
+          -moz-font-feature-settings: "kern" 1;
+          -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
         }
 
         /* 2. Animation Keyframes
