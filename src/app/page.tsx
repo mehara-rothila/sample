@@ -523,12 +523,12 @@ export default function GovLinkPortal() {
             <div className="flex flex-col space-y-3 sm:space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
               {/* Logo and Brand */}
               <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-4">
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-2xl flex items-center justify-center backdrop-blur-xl border ${
+                <div className={`hidden sm:flex w-12 h-12 lg:w-14 lg:h-14 rounded-2xl items-center justify-center backdrop-blur-xl border ${
                   isDarkMode
                     ? 'bg-gradient-to-br from-slate-800/80 to-gray-800/80 shadow-lg shadow-pink-600/20 border-pink-500/30'
                     : 'bg-gradient-to-br from-white/90 to-gray-100/90 shadow-lg shadow-pink-500/20 border-pink-300/40'
                 }`}>
-                  <LotusFlower className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />
+                  <LotusFlower className="w-10 h-10 lg:w-12 lg:h-12" />
                 </div>
                 <div className="text-center lg:text-left">
                   <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">GovLink</h1>
@@ -629,8 +629,8 @@ export default function GovLinkPortal() {
               : 'bg-white/70 border-white/50'
           }`}>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mb-3 sm:mb-4">
-                <LotusFlower className="w-full h-full" />
+              <div className="inline-flex items-center justify-center w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 mb-4 sm:mb-6">
+                <LotusFlower className="w-full h-full drop-shadow-2xl" />
               </div>
               <h2 className={`text-2xl sm:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent mb-3 sm:mb-4 ${
                 isDarkMode
@@ -656,36 +656,41 @@ export default function GovLinkPortal() {
                 {t.aiSearch.title}
               </h3>
               
-              <div className={`relative flex items-center w-full p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-lg backdrop-blur-lg ${
+              <div className={`relative flex items-center w-full backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border-2 overflow-hidden ${
                 isDarkMode
-                  ? 'bg-rose-950/40 border border-white/10'
-                  : 'bg-rose-100/50 border border-white/50'
+                  ? 'bg-gradient-to-r from-slate-800/80 to-slate-700/80 border-rose-500/30 shadow-rose-900/20'
+                  : 'bg-gradient-to-r from-white/90 to-rose-50/90 border-rose-300/40 shadow-rose-300/20'
               }`}>
+                <div className={`absolute inset-0 ${
+                  isDarkMode 
+                    ? 'bg-gradient-to-r from-rose-900/10 to-pink-900/10' 
+                    : 'bg-gradient-to-r from-rose-100/50 to-pink-100/50'
+                }`} />
                 <input
                   type="text"
                   placeholder={t.aiSearch.placeholder}
-                  className={`w-full bg-transparent pl-3 pr-12 sm:pl-5 sm:pr-20 py-2.5 sm:py-3 text-sm sm:text-base focus:outline-none ${
-                    isDarkMode ? 'text-rose-100 placeholder:text-rose-200/40' : 'text-rose-900 placeholder:text-rose-800/50'
+                  className={`relative z-10 w-full bg-transparent pl-4 pr-14 sm:pl-6 sm:pr-20 py-4 sm:py-5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-rose-400/50 rounded-2xl sm:rounded-3xl ${
+                    isDarkMode ? 'text-white placeholder:text-rose-200/60' : 'text-rose-900 placeholder:text-rose-700/70'
                   }`}
                   style={{ fontFamily: getFontFamily() }}
                 />
-                <button className={`absolute right-1.5 sm:right-2 top-1.5 bottom-1.5 sm:top-2 sm:bottom-2 w-10 sm:w-14 rounded-xl sm:rounded-2xl text-white flex items-center justify-center
-                  bg-gradient-to-b from-yellow-400 to-orange-500
-                  hover:scale-105 transition-transform duration-300 shadow-md shadow-orange-600/30
-                  focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-orange-400/50`}>
-                  <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
+                <button className={`absolute right-2 top-2 bottom-2 sm:right-3 sm:top-3 sm:bottom-3 w-12 sm:w-16 rounded-xl sm:rounded-2xl text-white flex items-center justify-center z-20
+                  bg-gradient-to-br from-yellow-400 via-orange-400 to-red-500
+                  hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-lg shadow-orange-600/40
+                  focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-orange-400/60 focus:scale-105`}>
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 drop-shadow-sm" />
                 </button>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-8">
                 {t.aiSearch.suggestions.map((suggestion, index) => (
                   <button
                     key={index}
-                    className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300
-                      backdrop-blur-sm border whitespace-nowrap
+                    className={`px-4 py-2.5 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300
+                      backdrop-blur-xl border-2 whitespace-nowrap shadow-lg hover:shadow-xl hover:-translate-y-0.5
                       ${isDarkMode
-                        ? 'bg-rose-900/30 text-rose-200 border-rose-500/20 hover:bg-rose-900/60'
-                        : 'bg-white/50 text-rose-800 border-rose-200/30 hover:bg-white/80'
+                        ? 'bg-gradient-to-r from-slate-700/60 to-slate-600/60 text-rose-200 border-rose-400/30 hover:border-rose-300/50 hover:from-slate-600/70 hover:to-slate-500/70'
+                        : 'bg-gradient-to-r from-white/80 to-rose-50/80 text-rose-800 border-rose-300/40 hover:border-rose-400/60 hover:from-white/90 hover:to-rose-100/90'
                       }`}
                     style={{ fontFamily: getFontFamily() }}
                   >
