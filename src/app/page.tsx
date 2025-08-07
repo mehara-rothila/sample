@@ -629,7 +629,7 @@ export default function GovLinkPortal() {
               : 'bg-white/70 border-white/50'
           }`}>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 mb-4 sm:mb-6">
+              <div className="inline-flex items-center justify-center w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mb-4 sm:mb-6">
                 <LotusFlower className="w-full h-full drop-shadow-2xl" />
               </div>
               <h2 className={`text-2xl sm:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent mb-3 sm:mb-4 ${
@@ -656,29 +656,24 @@ export default function GovLinkPortal() {
                 {t.aiSearch.title}
               </h3>
               
-              <div className={`relative flex items-center w-full backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border-2 overflow-hidden ${
+              <div className={`relative flex items-center w-full backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-lg border ${
                 isDarkMode
-                  ? 'bg-gradient-to-r from-slate-800/80 to-slate-700/80 border-rose-500/30 shadow-rose-900/20'
-                  : 'bg-gradient-to-r from-white/90 to-rose-50/90 border-rose-300/40 shadow-rose-300/20'
+                  ? 'bg-slate-800/60 border-white/10'
+                  : 'bg-white/70 border-white/30'
               }`}>
-                <div className={`absolute inset-0 ${
-                  isDarkMode 
-                    ? 'bg-gradient-to-r from-rose-900/10 to-pink-900/10' 
-                    : 'bg-gradient-to-r from-rose-100/50 to-pink-100/50'
-                }`} />
                 <input
                   type="text"
                   placeholder={t.aiSearch.placeholder}
-                  className={`relative z-10 w-full bg-transparent pl-4 pr-14 sm:pl-6 sm:pr-20 py-4 sm:py-5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-rose-400/50 rounded-2xl sm:rounded-3xl ${
-                    isDarkMode ? 'text-white placeholder:text-rose-200/60' : 'text-rose-900 placeholder:text-rose-700/70'
+                  className={`w-full bg-transparent pl-4 pr-14 sm:pl-6 sm:pr-20 py-4 sm:py-5 text-sm sm:text-base focus:outline-none rounded-2xl sm:rounded-3xl ${
+                    isDarkMode ? 'text-white placeholder:text-gray-400' : 'text-gray-700 placeholder:text-gray-500'
                   }`}
                   style={{ fontFamily: getFontFamily() }}
                 />
-                <button className={`absolute right-2 top-2 bottom-2 sm:right-3 sm:top-3 sm:bottom-3 w-12 sm:w-16 rounded-xl sm:rounded-2xl text-white flex items-center justify-center z-20
-                  bg-gradient-to-br from-yellow-400 via-orange-400 to-red-500
-                  hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-lg shadow-orange-600/40
-                  focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-orange-400/60 focus:scale-105`}>
-                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 drop-shadow-sm" />
+                <button className={`absolute right-2 top-2 bottom-2 sm:right-3 sm:top-3 sm:bottom-3 w-12 sm:w-16 rounded-xl sm:rounded-2xl text-white flex items-center justify-center
+                  bg-gradient-to-r from-orange-400 to-red-500
+                  hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg
+                  focus:outline-none focus:ring-2 focus:ring-orange-400/50`}>
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
 
@@ -687,10 +682,10 @@ export default function GovLinkPortal() {
                   <button
                     key={index}
                     className={`px-4 py-2.5 sm:px-5 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300
-                      backdrop-blur-xl border-2 whitespace-nowrap shadow-lg hover:shadow-xl hover:-translate-y-0.5
+                      backdrop-blur-xl border whitespace-nowrap shadow-md hover:shadow-lg hover:-translate-y-0.5
                       ${isDarkMode
-                        ? 'bg-gradient-to-r from-slate-700/60 to-slate-600/60 text-rose-200 border-rose-400/30 hover:border-rose-300/50 hover:from-slate-600/70 hover:to-slate-500/70'
-                        : 'bg-gradient-to-r from-white/80 to-rose-50/80 text-rose-800 border-rose-300/40 hover:border-rose-400/60 hover:from-white/90 hover:to-rose-100/90'
+                        ? 'bg-slate-700/60 text-gray-300 border-white/10 hover:bg-slate-600/70 hover:border-white/20'
+                        : 'bg-white/80 text-gray-700 border-white/40 hover:bg-white/90 hover:border-white/60'
                       }`}
                     style={{ fontFamily: getFontFamily() }}
                   >
