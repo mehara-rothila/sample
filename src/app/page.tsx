@@ -49,7 +49,7 @@ interface Translation {
     contactGN: string;
   };
   accessMethods: {
-    mobileWeb: { title: string; description:string; };
+    mobileWeb: { title: string; description: string; };
     sms: { title: string; description: string; };
     voice: { title: string; description: string; };
   };
@@ -85,7 +85,6 @@ interface Translation {
   };
 }
 
-
 // Types for our services
 interface Service {
   id: string;
@@ -105,7 +104,7 @@ interface AccessMethod {
 }
 
 // Lotus flower component
-const LotusFlower = ({ className = "w-8 h-8" }) => (
+const LotusFlower = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 100 100">
     {/* Outer layer petals */}
     <path d="M50,20 Q40,35 45,50 Q50,45 55,50 Q60,35 50,20 Z" fill="#c2185b"/>
@@ -378,7 +377,7 @@ export default function GovLinkPortal() {
       name: 'Income Certificate',
       namesSi: 'ආදායම් සහතිකය',
       namesTa: 'வருமான சான்றிதழ்',
-      icon: <FileText className="w-12 h-12" />,
+      icon: <FileText className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
       description: 'Required for welfare applications, scholarships, and government benefits.',
       estimatedTime: '2-3 days'
     },
@@ -387,7 +386,7 @@ export default function GovLinkPortal() {
       name: 'Birth Certificate',
       namesSi: 'උප්පැන්න සහතිකය',
       namesTa: 'பிறப்பு சான்றிதழ்',
-      icon: <Baby className="w-12 h-12" />,
+      icon: <Baby className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
       description: 'Official birth registration and certificate collection.',
       estimatedTime: '1-2 days'
     },
@@ -396,7 +395,7 @@ export default function GovLinkPortal() {
       name: 'Residence Certificate',
       namesSi: 'පදිංචි සහතිකය',
       namesTa: 'வசிப்பிட சான்றிதழ்',
-      icon: <Home className="w-12 h-12" />,
+      icon: <Home className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
       description: 'Proof of residence for school admissions and job applications.',
       estimatedTime: '1 day'
     },
@@ -405,7 +404,7 @@ export default function GovLinkPortal() {
       name: 'Character Certificate',
       namesSi: 'චරිත සහතිකය',
       namesTa: 'நல்ல நடத்தை சான்றிதழ்',
-      icon: <Shield className="w-12 h-12" />,
+      icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
       description: 'Police clearance and character verification for employment.',
       estimatedTime: '3-5 days'
     },
@@ -414,7 +413,7 @@ export default function GovLinkPortal() {
       name: 'Land Registry',
       namesSi: 'ඉඩම් ලේඛනය',
       namesTa: 'நில பதிவு',
-      icon: <Map className="w-12 h-12" />,
+      icon: <Map className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
       description: 'Land ownership verification and property documentation.',
       estimatedTime: '5-7 days'
     },
@@ -423,7 +422,7 @@ export default function GovLinkPortal() {
       name: 'Other Services',
       namesSi: 'වෙනත් සේවා',
       namesTa: 'பிற சேவைகள்',
-      icon: <ClipboardList className="w-12 h-12" />,
+      icon: <ClipboardList className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
       description: 'Marriage certificates, business registrations, and more.',
       estimatedTime: 'Varies'
     }
@@ -433,35 +432,35 @@ export default function GovLinkPortal() {
     {
       id: 'mobile-web',
       title: t.accessMethods.mobileWeb.title,
-      icon: <Smartphone className="w-16 h-16" />,
+      icon: <Smartphone className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16" />,
       description: t.accessMethods.mobileWeb.description
     },
     {
       id: 'sms',
       title: t.accessMethods.sms.title,
-      icon: <MessageSquare className="w-16 h-16" />,
+      icon: <MessageSquare className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16" />,
       description: t.accessMethods.sms.description
     },
     {
       id: 'voice',
       title: t.accessMethods.voice.title,
-      icon: <Phone className="w-16 h-16" />,
+      icon: <Phone className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16" />,
       description: t.accessMethods.voice.description
     }
   ];
 
   const navigationTabs = [
-    { id: 'services', label: t.navigation.bookService, icon: <Calendar className="w-4 h-4" /> },
-    { id: 'status', label: t.navigation.checkStatus, icon: <Search className="w-4 h-4" /> },
-    { id: 'documents', label: t.navigation.documents, icon: <FileCheck className="w-4 h-4" /> },
-    { id: 'contact', label: t.navigation.contactGN, icon: <Phone className="w-4 h-4" /> }
+    { id: 'services', label: t.navigation.bookService, icon: <Calendar className="w-3 h-3 sm:w-4 sm:h-4" /> },
+    { id: 'status', label: t.navigation.checkStatus, icon: <Search className="w-3 h-3 sm:w-4 sm:h-4" /> },
+    { id: 'documents', label: t.navigation.documents, icon: <FileCheck className="w-3 h-3 sm:w-4 sm:h-4" /> },
+    { id: 'contact', label: t.navigation.contactGN, icon: <Phone className="w-3 h-3 sm:w-4 sm:h-4" /> }
   ];
 
   const stats = [
-    { label: t.stats.gnOffices, value: '14,022', icon: <Building2 className="w-8 h-8" /> },
-    { label: t.stats.servicesAvailable, value: '25+', icon: <ClipboardList className="w-8 h-8" /> },
-    { label: t.stats.appointmentsToday, value: '1,247', icon: <Calendar className="w-8 h-8" /> },
-    { label: t.stats.happyCitizens, value: '50K+', icon: <Users className="w-8 h-8" /> }
+    { label: t.stats.gnOffices, value: '14,022', icon: <Building2 className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" /> },
+    { label: t.stats.servicesAvailable, value: '25+', icon: <ClipboardList className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" /> },
+    { label: t.stats.appointmentsToday, value: '1,247', icon: <Calendar className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" /> },
+    { label: t.stats.happyCitizens, value: '50K+', icon: <Users className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" /> }
   ];
 
   const handleBookService = (serviceId: string) => {
@@ -471,6 +470,17 @@ export default function GovLinkPortal() {
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
     console.log(`Switching to ${tab} section`);
+  };
+
+  const getFontFamily = () => {
+    switch (activeLanguage) {
+      case 'si':
+        return '"Noto Sans Sinhala", serif';
+      case 'ta':
+        return '"Noto Sans Tamil", serif';
+      default:
+        return 'inherit';
+    }
   };
 
   return (
@@ -484,17 +494,17 @@ export default function GovLinkPortal() {
 
       {/* Animated Glass Orbs */}
       <div className="fixed inset-0 overflow-hidden">
-        <div className={`absolute top-20 left-10 w-96 h-96 rounded-full blur-3xl animate-pulse ${
+        <div className={`absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full blur-3xl animate-pulse ${
           isDarkMode
             ? 'bg-gradient-to-br from-blue-600/10 to-purple-600/10'
             : 'bg-gradient-to-br from-red-300/20 to-orange-300/20'
         }`} />
-        <div className={`absolute bottom-20 right-10 w-80 h-80 rounded-full blur-3xl animate-pulse ${
+        <div className={`absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-40 h-40 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full blur-3xl animate-pulse ${
           isDarkMode
             ? 'bg-gradient-to-br from-emerald-600/10 to-cyan-600/10'
             : 'bg-gradient-to-br from-green-300/20 to-amber-300/20'
         }`} style={{ animationDelay: '2s' }} />
-        <div className={`absolute top-1/2 left-1/3 w-72 h-72 rounded-full blur-3xl animate-pulse ${
+        <div className={`absolute top-1/2 left-1/4 sm:left-1/3 w-36 h-36 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-full blur-3xl animate-pulse ${
           isDarkMode
             ? 'bg-gradient-to-br from-amber-600/10 to-orange-600/10'
             : 'bg-gradient-to-br from-yellow-300/20 to-red-300/20'
@@ -509,53 +519,54 @@ export default function GovLinkPortal() {
             ? 'bg-gradient-to-r from-slate-900/90 to-gray-900/90 border-white/5'
             : 'bg-gradient-to-r from-red-900/90 to-green-900/90 border-white/10'
         }`}>
-          <div className="max-w-7xl mx-auto px-4 py-4">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
+            <div className="flex flex-col space-y-3 sm:space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
               {/* Logo and Brand */}
-              <div className="flex items-center gap-4">
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center backdrop-blur-xl border ${
+              <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-4">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-2xl flex items-center justify-center backdrop-blur-xl border ${
                   isDarkMode
                     ? 'bg-gradient-to-br from-slate-800/80 to-gray-800/80 shadow-lg shadow-pink-600/20 border-pink-500/30'
                     : 'bg-gradient-to-br from-white/90 to-gray-100/90 shadow-lg shadow-pink-500/20 border-pink-300/40'
                 }`}>
-                  <LotusFlower className="w-12 h-12" />
+                  <LotusFlower className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />
                 </div>
-                <div>
-                  <h1 className="text-3xl font-bold text-white tracking-tight">GovLink</h1>
-                  <p className={`text-sm italic ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                <div className="text-center lg:text-left">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">GovLink</h1>
+                  <p className={`text-xs sm:text-sm italic ${isDarkMode ? 'text-gray-400' : 'text-white/80'} max-w-xs sm:max-w-sm lg:max-w-none`} 
+                     style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                     {t.tagline}
                   </p>
                 </div>
               </div>
 
               {/* Controls */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center lg:justify-end gap-2 sm:gap-4">
                 {/* Dark Mode Toggle */}
                 <button
                   onClick={() => setIsDarkMode(!isDarkMode)}
-                  className={`p-2.5 rounded-full transition-all duration-300 backdrop-blur-xl border ${
+                  className={`p-2 sm:p-2.5 rounded-full transition-all duration-300 backdrop-blur-xl border ${
                     isDarkMode
                       ? 'bg-slate-700/50 border-white/10 hover:bg-slate-600/50 text-red-400'
                       : 'bg-white/20 border-white/20 hover:bg-white/30 text-yellow-300'
                   }`}
                   aria-label="Toggle dark mode"
                 >
-                  {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                  {isDarkMode ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
                 </button>
 
                 {/* Language Selector */}
-                <div className="flex gap-2">
+                <div className="flex gap-1 sm:gap-2">
                   {[
-                    { code: 'en', label: 'English' },
-                    { code: 'si', label: 'සිංහල' },
-                    { code: 'ta', label: 'தமிழ்' }
+                    { code: 'en', label: 'EN' },
+                    { code: 'si', label: 'සි' },
+                    { code: 'ta', label: 'த' }
                   ].map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => setActiveLanguage(lang.code as Language)}
                       className={`
-                        px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
-                        backdrop-blur-xl border
+                        px-2 py-1.5 sm:px-3 sm:py-2 lg:px-4 rounded-full text-xs sm:text-sm font-medium transition-all duration-300
+                        backdrop-blur-xl border min-w-[2.5rem] sm:min-w-[3rem]
                         ${activeLanguage === lang.code
                           ? isDarkMode
                             ? 'bg-gradient-to-r from-red-500/80 to-rose-600/80 text-white border-white/20 shadow-lg shadow-red-600/20'
@@ -581,15 +592,15 @@ export default function GovLinkPortal() {
             ? 'bg-slate-800/80 border-b-4 border-amber-500'
             : 'bg-white/80 border-b-4 border-amber-400'
         }`}>
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex justify-center">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4">
+            <div className="flex justify-center overflow-x-auto scrollbar-hide">
               {navigationTabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => handleTabChange(tab.id)}
                   className={`
-                    px-6 py-4 text-sm font-medium transition-all duration-300
-                    flex items-center gap-2 border-b-2
+                    flex-shrink-0 px-3 py-3 sm:px-4 sm:py-4 lg:px-6 text-xs sm:text-sm font-medium transition-all duration-300
+                    flex items-center gap-1.5 sm:gap-2 border-b-2 min-w-fit
                     ${activeTab === tab.id
                       ? isDarkMode
                         ? 'bg-gradient-to-t from-red-900/30 to-transparent text-red-400 border-red-500'
@@ -599,9 +610,10 @@ export default function GovLinkPortal() {
                         : 'text-gray-600 border-transparent hover:text-red-600 hover:bg-red-50/30'
                     }
                   `}
+                  style={{ fontFamily: getFontFamily() }}
                 >
                   {tab.icon}
-                  {tab.label}
+                  <span className="whitespace-nowrap">{tab.label}</span>
                 </button>
               ))}
             </div>
@@ -609,73 +621,78 @@ export default function GovLinkPortal() {
         </nav>
 
         {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-4 py-8">
+        <main className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6 lg:py-8">
           {/* Welcome Banner */}
-          <div className={`welcome-banner backdrop-blur-xl rounded-3xl shadow-2xl px-8 pt-6 pb-8 mb-8 border ${
+          <div className={`welcome-banner backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 mb-6 sm:mb-8 border ${
             isDarkMode
               ? 'bg-slate-800/70 border-white/10'
               : 'bg-white/70 border-white/50'
           }`}>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-48 h-auto mb-2">
-                <LotusFlower className="w-44 h-44" />
+              <div className="inline-flex items-center justify-center w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 mb-3 sm:mb-4">
+                <LotusFlower className="w-full h-full" />
               </div>
-              <h2 className={`text-5xl font-bold bg-clip-text text-transparent mb-4 ${
+              <h2 className={`text-2xl sm:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent mb-3 sm:mb-4 ${
                 isDarkMode
                   ? 'bg-gradient-to-r from-red-400 to-rose-500'
                   : 'bg-gradient-to-r from-red-700 to-green-700'
-              }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.2' }}>
+              }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.2' }}>
                 {t.title}
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto leading-relaxed ${
+              <p className={`text-sm sm:text-base lg:text-lg max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-2 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+              }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                 {t.subtitle}
               </p>
             </div>
           </div>
 
-          {/* START: AI Search Section (Color Corrected) */}
-          <div className="mb-12">
-            <div className="text-center max-w-3xl mx-auto">
-              <h3 className={`text-2xl font-semibold mb-6 ${
+          {/* AI Search Section */}
+          <div className="mb-8 sm:mb-12">
+            <div className="text-center max-w-4xl mx-auto px-2">
+              <h3 className={`text-lg sm:text-xl lg:text-2xl font-semibold mb-4 sm:mb-6 ${
                 isDarkMode ? 'text-rose-200/90' : 'text-rose-900/80'
-              }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+              }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                 {t.aiSearch.title}
               </h3>
               
-              <div className={`relative flex items-center w-full p-2 rounded-3xl shadow-lg backdrop-blur-lg ${
+              <div className={`relative flex items-center w-full p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-2xl backdrop-blur-xl border ${
                 isDarkMode
-                  ? 'bg-rose-950/40 border border-white/10'
-                  : 'bg-rose-100/50 border border-white/50'
+                  ? 'bg-gradient-to-r from-slate-800/90 to-slate-700/90 border-red-500/20 shadow-red-500/10'
+                  : 'bg-gradient-to-r from-white/95 to-gray-50/95 border-amber-400/30 shadow-amber-500/20'
               }`}>
                 <input
                   type="text"
                   placeholder={t.aiSearch.placeholder}
-                  className={`w-full bg-transparent pl-5 pr-20 py-3 text-base focus:outline-none ${
-                    isDarkMode ? 'text-rose-100 placeholder:text-rose-200/40' : 'text-rose-900 placeholder:text-rose-800/50'
+                  className={`w-full bg-transparent pl-4 pr-12 sm:pl-6 sm:pr-20 py-3 sm:py-4 text-sm sm:text-base focus:outline-none font-medium ${
+                    isDarkMode 
+                      ? 'text-gray-200 placeholder:text-gray-400' 
+                      : 'text-gray-800 placeholder:text-gray-600'
                   }`}
-                  style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif' }}
+                  style={{ fontFamily: getFontFamily() }}
                 />
-                <button className={`absolute right-2 top-2 bottom-2 w-14 rounded-2xl text-white flex items-center justify-center
-                  bg-gradient-to-b from-yellow-400 to-orange-500
-                  hover:scale-105 transition-transform duration-300 shadow-md shadow-orange-600/30
-                  focus:outline-none focus:ring-4 focus:ring-orange-400/50`}>
-                  <ChevronRight className="w-6 h-6" />
+                <button className={`absolute right-1.5 sm:right-2 top-1.5 bottom-1.5 sm:top-2 sm:bottom-2 w-12 sm:w-16 rounded-xl sm:rounded-2xl text-white flex items-center justify-center
+                  bg-gradient-to-r from-amber-500 via-orange-500 to-red-500
+                  hover:from-amber-600 hover:via-orange-600 hover:to-red-600
+                  hover:scale-105 transition-all duration-300 shadow-lg shadow-orange-600/40
+                  focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-orange-400/50 focus:ring-offset-2
+                  ${isDarkMode ? 'focus:ring-offset-slate-800' : 'focus:ring-offset-white'}
+                `}>
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
                 {t.aiSearch.suggestions.map((suggestion, index) => (
                   <button
                     key={index}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
-                      backdrop-blur-sm border
+                    className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300
+                      backdrop-blur-xl border shadow-lg whitespace-nowrap hover:scale-105
                       ${isDarkMode
-                        ? 'bg-rose-900/30 text-rose-200 border-rose-500/20 hover:bg-rose-900/60'
-                        : 'bg-white/50 text-rose-800 border-rose-200/30 hover:bg-white/80'
+                        ? 'bg-gradient-to-r from-slate-700/80 to-slate-600/80 text-gray-200 border-red-400/30 hover:from-slate-600/90 hover:to-slate-500/90 hover:border-red-400/50 shadow-red-500/10'
+                        : 'bg-gradient-to-r from-white/90 to-gray-100/90 text-gray-700 border-amber-300/40 hover:from-amber-50/95 hover:to-orange-50/95 hover:border-amber-400/60 shadow-amber-500/20'
                       }`}
-                    style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif' }}
+                    style={{ fontFamily: getFontFamily() }}
                   >
                     {suggestion}
                   </button>
@@ -683,14 +700,13 @@ export default function GovLinkPortal() {
               </div>
             </div>
           </div>
-          {/* END: AI Search Section */}
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
             {services.map((service, index) => (
               <div
                 key={service.id}
-                className={`group backdrop-blur-xl rounded-2xl p-6 shadow-xl border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col ${
+                className={`group backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col min-h-[200px] sm:min-h-[240px] ${
                   isDarkMode
                     ? 'bg-slate-800/60 border-white/10 hover:bg-slate-800/80 hover:border-red-500/30'
                     : 'bg-white/60 border-white/50 hover:bg-white/80'
@@ -698,9 +714,9 @@ export default function GovLinkPortal() {
                 onClick={() => handleBookService(service.id)}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Top content with variable height */}
-                <div>
-                  <div className={`flex items-center justify-center w-16 h-16 rounded-2xl mb-4 transition-all duration-300 ${
+                {/* Top content */}
+                <div className="flex-1">
+                  <div className={`flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 transition-all duration-300 ${
                     isDarkMode
                       ? 'bg-gradient-to-br from-red-600/20 to-rose-600/20 group-hover:from-red-600/30 group-hover:to-rose-600/30'
                       : 'bg-gradient-to-br from-red-500/10 to-amber-500/10 group-hover:from-red-500/20 group-hover:to-amber-500/20'
@@ -709,21 +725,21 @@ export default function GovLinkPortal() {
                       {service.icon}
                     </div>
                   </div>
-                  <h3 className={`text-xl font-semibold mb-2 ${
+                  <h3 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 ${
                     isDarkMode ? 'text-red-400' : 'text-red-700'
-                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                     {activeLanguage === 'si' ? service.namesSi : activeLanguage === 'ta' ? service.namesTa : service.name}
                   </h3>
-                  <p className={`text-sm mb-4 leading-relaxed ${
+                  <p className={`text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                     {t.services.descriptions[service.id] || service.description}
                   </p>
                 </div>
 
-                {/* Bottom content pushed to the end of the card */}
-                <div className="mt-auto pt-4">
-                  <div className="flex items-center justify-between mb-4">
+                {/* Bottom content */}
+                <div className="mt-auto">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <span className={`flex items-center gap-1 text-xs font-medium ${
                       isDarkMode ? 'text-emerald-400' : 'text-green-600'
                     }`}>
@@ -732,16 +748,16 @@ export default function GovLinkPortal() {
                     </span>
                   </div>
                   <button className={`
-                    w-full py-3 px-4 rounded-xl font-semibold text-white
+                    w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl font-semibold text-white text-sm sm:text-base
                     shadow-lg hover:shadow-xl hover:scale-[1.02]
-                    transition-all duration-300 flex items-center justify-center gap-2
+                    transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2
                     ${isDarkMode
                       ? 'bg-gradient-to-r from-emerald-500 to-green-400 shadow-emerald-500/20 hover:shadow-green-400/30'
                       : 'bg-gradient-to-r from-emerald-700 to-green-600 shadow-emerald-700/30 hover:shadow-green-600/40'
                     }
-                  `} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif' }}>
+                  `} style={{ fontFamily: getFontFamily() }}>
                     {t.bookAppointment}
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
                   </button>
                 </div>
               </div>
@@ -749,43 +765,43 @@ export default function GovLinkPortal() {
           </div>
 
           {/* Access Methods */}
-          <div className={`backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border ${
+          <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8 border ${
             isDarkMode
               ? 'bg-slate-800/70 border-white/10'
               : 'bg-white/70 border-white/50'
           }`}>
-            <h3 className={`text-3xl font-bold text-center bg-clip-text text-transparent mb-8 ${
+            <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold text-center bg-clip-text text-transparent mb-6 sm:mb-8 ${
               isDarkMode
                 ? 'bg-gradient-to-r from-red-400 to-rose-500'
                 : 'bg-gradient-to-r from-red-700 to-green-700'
-            }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.2' }}>
+            }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.2' }}>
               {t.threeWays}
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {accessMethods.map((method, index) => (
                 <div
                   key={method.id}
-                  className={`text-center p-6 backdrop-blur-xl rounded-2xl border transition-all duration-300 ${
+                  className={`text-center p-4 sm:p-6 backdrop-blur-xl rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                     isDarkMode
                       ? 'bg-slate-700/40 border-white/5 hover:bg-slate-700/60 hover:border-red-500/30'
                       : 'bg-white/40 border-white/30 hover:bg-white/60 hover:border-amber-400/30'
                   }`}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <div className={`flex justify-center mb-4 ${
+                  <div className={`flex justify-center mb-3 sm:mb-4 ${
                     isDarkMode ? 'text-red-500' : 'text-amber-600'
                   }`}>
                     {method.icon}
                   </div>
-                  <h4 className={`text-xl font-semibold mb-3 ${
+                  <h4 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 ${
                     isDarkMode ? 'text-red-400' : 'text-red-700'
-                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                     {method.title}
                   </h4>
-                  <p className={`leading-relaxed ${
+                  <p className={`text-sm sm:text-base leading-relaxed ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                     {method.description}
                   </p>
                 </div>
@@ -794,32 +810,32 @@ export default function GovLinkPortal() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className={`backdrop-blur-xl rounded-2xl p-6 text-center shadow-xl border transition-all duration-300 ${
+                className={`backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center shadow-xl border transition-all duration-300 ${
                   isDarkMode
                     ? 'bg-slate-800/60 border-white/10 hover:bg-slate-800/80'
                     : 'bg-white/60 border-white/40 hover:bg-white/80'
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`flex justify-center mb-3 ${
+                <div className={`flex justify-center mb-2 sm:mb-3 ${
                   isDarkMode ? 'text-red-500' : 'text-amber-600'
                 }`}>
                   {stat.icon}
                 </div>
-                <div className={`text-3xl font-bold bg-clip-text text-transparent ${
+                <div className={`text-xl sm:text-2xl lg:text-3xl font-bold bg-clip-text text-transparent ${
                   isDarkMode
                     ? 'bg-gradient-to-r from-red-400 to-rose-500'
                     : 'bg-gradient-to-r from-red-600 to-amber-600'
                 }`}>
                   {stat.value}
                 </div>
-                <div className={`text-sm mt-1 ${
+                <div className={`text-xs sm:text-sm mt-1 ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}>
+                }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                   {stat.label}
                 </div>
               </div>
@@ -828,28 +844,32 @@ export default function GovLinkPortal() {
         </main>
 
         {/* Footer */}
-        <footer className={`backdrop-blur-xl text-white mt-16 ${
+        <footer className={`backdrop-blur-xl text-white mt-8 sm:mt-12 lg:mt-16 ${
           isDarkMode
             ? 'bg-gradient-to-r from-slate-900/90 to-gray-900/90'
             : 'bg-gradient-to-r from-red-900/90 to-green-900/90'
         }`}>
-          <div className="max-w-7xl mx-auto px-4 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               <div>
-                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-3 sm:mb-4' : 'text-amber-400 font-semibold mb-3 sm:mb-4'} text-sm sm:text-base`} 
+                   style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                   {t.footer.government}
                 </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                <div className={`text-xs sm:text-sm space-y-1 sm:space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} 
+                     style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                   <p>{t.footer.ministry}</p>
                   <p>{t.footer.divisional}</p>
                   <p>{t.footer.network}</p>
                 </div>
               </div>
               <div>
-                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-3 sm:mb-4' : 'text-amber-400 font-semibold mb-3 sm:mb-4'} text-sm sm:text-base`} 
+                   style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                   {t.footer.quickLinks}
                 </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                <div className={`text-xs sm:text-sm space-y-1 sm:space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} 
+                     style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                   <p className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
                     <BookOpen className="w-3 h-3" /> {t.footer.serviceGuidelines}
                   </p>
@@ -865,10 +885,12 @@ export default function GovLinkPortal() {
                 </div>
               </div>
               <div>
-                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-3 sm:mb-4' : 'text-amber-400 font-semibold mb-3 sm:mb-4'} text-sm sm:text-base`} 
+                   style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                   {t.footer.contactInfo}
                 </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                <div className={`text-xs sm:text-sm space-y-1 sm:space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} 
+                     style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                   <p className="flex items-center gap-2">
                     <Phone className="w-3 h-3" /> {t.footer.hotline}
                   </p>
@@ -881,10 +903,12 @@ export default function GovLinkPortal() {
                 </div>
               </div>
               <div>
-                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-4' : 'text-amber-400 font-semibold mb-4'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.4' }}>
+                <h4 className={`${isDarkMode ? 'text-red-400 font-semibold mb-3 sm:mb-4' : 'text-amber-400 font-semibold mb-3 sm:mb-4'} text-sm sm:text-base`} 
+                   style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                   {t.footer.systemStatus}
                 </h4>
-                <div className={`text-sm space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+                <div className={`text-xs sm:text-sm space-y-1 sm:space-y-2 ${isDarkMode ? 'text-gray-400' : 'text-white/80'}`} 
+                     style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                   <p className="flex items-center gap-2">
                     <Zap className="w-3 h-3 text-green-400" />
                     {t.footer.status} <span className="text-green-400">{t.footer.online}</span>
@@ -895,10 +919,11 @@ export default function GovLinkPortal() {
               </div>
             </div>
 
-            <div className={`border-t mt-8 pt-6 text-center ${
+            <div className={`border-t mt-6 sm:mt-8 pt-4 sm:pt-6 text-center ${
               isDarkMode ? 'border-white/10' : 'border-white/20'
             }`}>
-              <p className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-white/60'}`} style={{ fontFamily: activeLanguage === 'en' ? 'inherit' : activeLanguage === 'si' ? '"Noto Sans Sinhala", serif' : '"Noto Sans Tamil", serif', lineHeight: '1.6' }}>
+              <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-500' : 'text-white/60'}`} 
+                 style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                 {t.footer.copyright}
               </p>
             </div>
@@ -911,280 +936,87 @@ export default function GovLinkPortal() {
         /* Import Google Fonts for better Sinhala and Tamil support */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-        /* GovLink Portal - Enhanced with Dark Mode Support */
-
-        /* 1. Foundational Styles & Custom Properties
-        ----------------------------------------------------------------*/
-        :root {
-          --color-primary-amber: #F59E0B;
-          --color-primary-orange: #F97316;
-          --color-primary-red: #EF4444;
-          --color-brand-red: #991B1B;
-          --color-brand-green: #14532D;
-          --color-text-dark: #1F2937;
-          --color-text-light: #F8FAFC;
-          --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-          --font-sinhala: 'Noto Sans Sinhala', serif;
-          --font-tamil: 'Noto Sans Tamil', serif;
+        /* Hide scrollbar but allow scrolling */
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
 
+        /* Responsive font sizes */
+        @media (max-width: 640px) {
+          .text-5xl { font-size: 2rem; line-height: 2.5rem; }
+          .text-4xl { font-size: 1.875rem; line-height: 2.25rem; }
+          .text-3xl { font-size: 1.5rem; line-height: 2rem; }
+          .text-2xl { font-size: 1.25rem; line-height: 1.75rem; }
+          .text-xl { font-size: 1.125rem; line-height: 1.75rem; }
+          .text-lg { font-size: 1rem; line-height: 1.5rem; }
+        }
+
+        /* Enhanced touch targets for mobile */
+        @media (max-width: 768px) {
+          button {
+            min-height: 44px;
+            min-width: 44px;
+          }
+        }
+
+        /* Smooth animations */
+        * {
+          transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Focus styles for accessibility */
+        button:focus-visible {
+          outline: 2px solid #F59E0B;
+          outline-offset: 2px;
+        }
+
+        /* Ensure proper text rendering for all languages */
         body {
-          font-family: var(--font-sans);
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          transition: background-color 0.3s ease;
-        }
-
-        .dark {
-          color-scheme: dark;
-        }
-
-        /* Enhanced font rendering for Sinhala and Tamil */
-        .sinhala-text {
-          font-family: var(--font-sinhala);
-          line-height: 1.6;
-          letter-spacing: 0.025em;
-        }
-
-        .tamil-text {
-          font-family: var(--font-tamil);
-          line-height: 1.6;
-          letter-spacing: 0.025em;
-        }
-
-        /* Ensure proper rendering for complex scripts */
-        .sinhala-text, .tamil-text {
           text-rendering: optimizeLegibility;
+        }
+
+        /* Language-specific font improvements */
+        [style*="Noto Sans Sinhala"] {
           -webkit-font-feature-settings: "kern" 1;
           -moz-font-feature-settings: "kern" 1;
           -o-font-feature-settings: "kern" 1;
           font-feature-settings: "kern" 1;
         }
 
-        /* 2. Animation Keyframes
-        ----------------------------------------------------------------*/
-        @keyframes orb-pulse {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 0.2;
-          }
-          50% {
-            transform: scale(1.1);
-            opacity: 0.3;
-          }
+        [style*="Noto Sans Tamil"] {
+          -webkit-font-feature-settings: "kern" 1;
+          -moz-font-feature-settings: "kern" 1;
+          -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
         }
 
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(25px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        /* Improve mobile performance */
+        .backdrop-blur-xl {
+          -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
+          will-change: transform;
         }
 
-        @keyframes button-pulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.03); }
-          100% { transform: scale(1); }
-        }
-
-        /* 3. Page Structure & Background
-        ----------------------------------------------------------------*/
+        /* Animation performance improvements */
         .animate-pulse {
-          animation: orb-pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
-        .relative.z-10 {
-          animation: fade-in-up 0.8s ease-out forwards;
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
         }
 
-        /* 4. Header & Navigation Styling
-        ----------------------------------------------------------------*/
-        header {
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .dark header {
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        }
-
-        header .flex-col {
-          gap: 1rem;
-        }
-
-        header button {
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        header button:hover:not([class*="bg-gradient-to-r"]) {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        nav {
-          backdrop-filter: blur(16px) !important;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .dark nav {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        nav button {
-          position: relative;
-          overflow: hidden;
-        }
-
-        nav button::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 5px;
-          height: 5px;
-          background: rgba(255, 255, 255, 0.7);
-          opacity: 0;
-          border-radius: 50%;
-          transform: scale(1, 1) translate(-50%, -50%);
-          transform-origin: 50% 50%;
-        }
-
-        .dark nav button::after {
-          background: rgba(239, 68, 68, 0.5);
-        }
-
-        nav button:hover::after {
-          animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
-          0% {
-            transform: scale(0, 0) translate(-50%, -50%);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(30, 30) translate(-50%, -50%);
-            opacity: 0;
-          }
-        }
-
-        /* 5. Main Content Cards & Banners
-        ----------------------------------------------------------------*/
-        .backdrop-blur-xl[class*="bg-white/"],
-        .backdrop-blur-xl[class*="bg-slate-"] {
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease-in-out;
-        }
-
-        .dark .backdrop-blur-xl[class*="bg-slate-"] {
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .backdrop-blur-xl[class*="bg-white/"]:hover,
-        .backdrop-blur-xl[class*="bg-slate-"]:hover {
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .dark .backdrop-blur-xl[class*="bg-slate-"]:hover {
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        .welcome-banner .text-5xl {
-          text-shadow: 2px 2px 10px rgba(153, 27, 27, 0.2);
-        }
-
-        .dark .welcome-banner .text-5xl {
-          text-shadow: 2px 2px 10px rgba(239, 68, 68, 0.2);
-        }
-
-        .grid.gap-6 > div,
-        .grid.gap-8 > div,
-        .grid.gap-4 > div {
-          animation: fade-in-up 0.5s ease-out forwards;
-          opacity: 0;
-        }
-
-        .grid.gap-6 > div .w-16.h-16 {
-          border: 1px solid rgba(239, 68, 68, 0.1);
-          transition: all 0.3s ease;
-        }
-
-        .dark .grid.gap-6 > div .w-16.h-16 {
-          border: 1px solid rgba(239, 68, 68, 0.1);
-        }
-
-        .grid.gap-6 > div:hover .w-16.h-16 {
-          transform: scale(1.1) rotate(-10deg);
-          border-color: rgba(239, 68, 68, 0.3);
-        }
-
-        .dark .grid.gap-6 > div:hover .w-16.h-16 {
-          border-color: rgba(239, 68, 68, 0.3);
-        }
-
-        .grid.gap-8 > div:hover {
-          transform: translateY(-5px);
-        }
-
-        .grid.gap-4 > div:hover {
-          transform: scale(1.05);
-        }
-
-        /* 6. Footer Styling
-        ----------------------------------------------------------------*/
-        footer {
-          box-shadow: 0 -8px 32px 0 rgba(0, 0, 0, 0.37);
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .dark footer {
-          box-shadow: 0 -8px 32px 0 rgba(0, 0, 0, 0.5);
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        footer h4 {
-          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        footer .text-white\\/80 > p,
-        footer .text-gray-400 > p {
-          transition: all 0.2s ease-in-out;
-        }
-
-        footer .text-white\\/80 > p:hover,
-        footer .text-gray-400 > p:hover {
-          color: #EF4444 !important;
-          transform: translateX(4px);
-        }
-
-        footer .text-white\\/60,
-        footer .text-gray-500 {
-          transition: color 0.3s ease;
-        }
-
-        footer .text-white\\/60:hover {
-          color: var(--color-text-light);
-        }
-
-        footer .text-gray-500:hover {
-          color: #9CA3AF;
-        }
-
-        /* 7. Dark mode toggle button animation */
-        button[aria-label="Toggle dark mode"] svg {
-          transition: transform 0.3s ease;
-        }
-
-        button[aria-label="Toggle dark mode"]:hover svg {
-          transform: rotate(180deg);
-        }
-
-        /* 8. Smooth color transitions */
-        * {
-          transition: background-color 0.3s ease, border-color 0.3s ease;
+        /* Prevent layout shifts */
+        .grid > * {
+          min-height: 0;
         }
       `}</style>
     </div>
