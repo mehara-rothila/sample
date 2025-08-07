@@ -483,47 +483,6 @@ export default function GovLinkPortal() {
     }
   };
 
-  const getTextSizeClasses = (baseSize: string) => {
-    if (activeLanguage === 'ta') {
-      // Tamil text needs larger sizes on mobile for better readability
-      switch (baseSize) {
-        case 'xs': return 'text-sm sm:text-base lg:text-lg';
-        case 'sm': return 'text-base sm:text-lg lg:text-xl';
-        case 'base': return 'text-lg sm:text-xl lg:text-2xl';
-        case 'lg': return 'text-xl sm:text-2xl lg:text-3xl';
-        case 'xl': return 'text-2xl sm:text-3xl lg:text-4xl';
-        case '2xl': return 'text-3xl sm:text-4xl lg:text-5xl';
-        case '3xl': return 'text-4xl sm:text-5xl lg:text-6xl';
-        default: return baseSize;
-      }
-    } else if (activeLanguage === 'si') {
-      // Sinhala text needs slightly larger sizes
-      switch (baseSize) {
-        case 'xs': return 'text-sm sm:text-base lg:text-lg';
-        case 'sm': return 'text-base sm:text-lg lg:text-xl';
-        case 'base': return 'text-base sm:text-lg lg:text-xl';
-        case 'lg': return 'text-lg sm:text-xl lg:text-2xl';
-        case 'xl': return 'text-xl sm:text-2xl lg:text-3xl';
-        case '2xl': return 'text-2xl sm:text-3xl lg:text-4xl';
-        case '3xl': return 'text-3xl sm:text-4xl lg:text-5xl';
-        default: return baseSize;
-      }
-    }
-    // English uses standard responsive sizes
-    return baseSize;
-  };
-
-  const getLineHeight = () => {
-    switch (activeLanguage) {
-      case 'ta':
-        return '1.8'; // Tamil needs more line height for complex characters
-      case 'si':
-        return '1.7'; // Sinhala needs slightly more line height
-      default:
-        return '1.6';
-    }
-  };
-
   return (
     <div className={`min-h-screen relative overflow-hidden ${isDarkMode ? 'dark' : ''}`}>
       {/* Gradient Background */}
@@ -573,8 +532,8 @@ export default function GovLinkPortal() {
                 </div>
                 <div className="text-center lg:text-left">
                   <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">GovLink</h1>
-                  <p className={`${getTextSizeClasses('text-xs sm:text-sm')} italic ${isDarkMode ? 'text-gray-400' : 'text-white/80'} max-w-xs sm:max-w-sm lg:max-w-none`} 
-                     style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+                  <p className={`text-xs sm:text-sm italic ${isDarkMode ? 'text-gray-400' : 'text-white/80'} max-w-xs sm:max-w-sm lg:max-w-none`} 
+                     style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                     {t.tagline}
                   </p>
                 </div>
@@ -640,7 +599,7 @@ export default function GovLinkPortal() {
                   key={tab.id}
                   onClick={() => handleTabChange(tab.id)}
                   className={`
-                    flex-shrink-0 px-3 py-3 sm:px-4 sm:py-4 lg:px-6 ${getTextSizeClasses('text-xs sm:text-sm')} font-medium transition-all duration-300
+                    flex-shrink-0 px-3 py-3 sm:px-4 sm:py-4 lg:px-6 text-xs sm:text-sm font-medium transition-all duration-300
                     flex items-center gap-1.5 sm:gap-2 border-b-2 min-w-fit
                     ${activeTab === tab.id
                       ? isDarkMode
@@ -651,7 +610,7 @@ export default function GovLinkPortal() {
                         : 'text-gray-600 border-transparent hover:text-red-600 hover:bg-red-50/30'
                     }
                   `}
-                  style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}
+                  style={{ fontFamily: getFontFamily() }}
                 >
                   {tab.icon}
                   <span className="whitespace-nowrap">{tab.label}</span>
@@ -673,16 +632,16 @@ export default function GovLinkPortal() {
               <div className="inline-flex items-center justify-center w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 mb-3 sm:mb-4">
                 <LotusFlower className="w-full h-full" />
               </div>
-              <h2 className={`${getTextSizeClasses('text-2xl sm:text-4xl lg:text-5xl')} font-bold bg-clip-text text-transparent mb-3 sm:mb-4 px-2 ${
+              <h2 className={`text-2xl sm:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent mb-3 sm:mb-4 ${
                 isDarkMode
                   ? 'bg-gradient-to-r from-red-400 to-rose-500'
                   : 'bg-gradient-to-r from-red-700 to-green-700'
-              }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+              }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.2' }}>
                 {t.title}
               </h2>
-              <p className={`${getTextSizeClasses('text-sm sm:text-base lg:text-lg')} max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-4 ${
+              <p className={`text-sm sm:text-base lg:text-lg max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-2 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+              }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                 {t.subtitle}
               </p>
             </div>
@@ -691,9 +650,9 @@ export default function GovLinkPortal() {
           {/* AI Search Section */}
           <div className="mb-8 sm:mb-12">
             <div className="text-center max-w-4xl mx-auto px-2">
-              <h3 className={`${getTextSizeClasses('text-lg sm:text-xl lg:text-2xl')} font-semibold mb-4 sm:mb-6 px-2 ${
+              <h3 className={`text-lg sm:text-xl lg:text-2xl font-semibold mb-4 sm:mb-6 ${
                 isDarkMode ? 'text-rose-200/90' : 'text-rose-900/80'
-              }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+              }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                 {t.aiSearch.title}
               </h3>
               
@@ -766,14 +725,14 @@ export default function GovLinkPortal() {
                       {service.icon}
                     </div>
                   </div>
-                  <h3 className={`${getTextSizeClasses('text-lg sm:text-xl')} font-semibold mb-2 sm:mb-3 ${
+                  <h3 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 ${
                     isDarkMode ? 'text-red-400' : 'text-red-700'
-                  }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                     {activeLanguage === 'si' ? service.namesSi : activeLanguage === 'ta' ? service.namesTa : service.name}
                   </h3>
-                  <p className={`${getTextSizeClasses('text-xs sm:text-sm')} mb-3 sm:mb-4 leading-relaxed ${
+                  <p className={`text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                     {t.services.descriptions[service.id] || service.description}
                   </p>
                 </div>
@@ -789,14 +748,14 @@ export default function GovLinkPortal() {
                     </span>
                   </div>
                   <button className={`
-                    w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl font-semibold text-white ${getTextSizeClasses('text-sm sm:text-base')}
+                    w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl font-semibold text-white text-sm sm:text-base
                     shadow-lg hover:shadow-xl hover:scale-[1.02]
                     transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2
                     ${isDarkMode
                       ? 'bg-gradient-to-r from-emerald-500 to-green-400 shadow-emerald-500/20 hover:shadow-green-400/30'
                       : 'bg-gradient-to-r from-emerald-700 to-green-600 shadow-emerald-700/30 hover:shadow-green-600/40'
                     }
-                  `} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+                  `} style={{ fontFamily: getFontFamily() }}>
                     {t.bookAppointment}
                     <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
                   </button>
@@ -811,11 +770,11 @@ export default function GovLinkPortal() {
               ? 'bg-slate-800/70 border-white/10'
               : 'bg-white/70 border-white/50'
           }`}>
-            <h3 className={`${getTextSizeClasses('text-xl sm:text-2xl lg:text-3xl')} font-bold text-center bg-clip-text text-transparent mb-6 sm:mb-8 px-2 ${
+            <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold text-center bg-clip-text text-transparent mb-6 sm:mb-8 ${
               isDarkMode
                 ? 'bg-gradient-to-r from-red-400 to-rose-500'
                 : 'bg-gradient-to-r from-red-700 to-green-700'
-            }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+            }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.2' }}>
               {t.threeWays}
             </h3>
 
@@ -835,14 +794,14 @@ export default function GovLinkPortal() {
                   }`}>
                     {method.icon}
                   </div>
-                  <h4 className={`${getTextSizeClasses('text-lg sm:text-xl')} font-semibold mb-2 sm:mb-3 px-1 ${
+                  <h4 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 ${
                     isDarkMode ? 'text-red-400' : 'text-red-700'
-                  }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                     {method.title}
                   </h4>
-                  <p className={`${getTextSizeClasses('text-sm sm:text-base')} leading-relaxed px-1 ${
+                  <p className={`text-sm sm:text-base leading-relaxed ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+                  }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.6' }}>
                     {method.description}
                   </p>
                 </div>
@@ -874,9 +833,9 @@ export default function GovLinkPortal() {
                 }`}>
                   {stat.value}
                 </div>
-                <div className={`${getTextSizeClasses('text-xs sm:text-sm')} mt-1 ${
+                <div className={`text-xs sm:text-sm mt-1 ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                }`} style={{ fontFamily: getFontFamily(), lineHeight: getLineHeight() }}>
+                }`} style={{ fontFamily: getFontFamily(), lineHeight: '1.4' }}>
                   {stat.label}
                 </div>
               </div>
@@ -1029,41 +988,13 @@ export default function GovLinkPortal() {
           -moz-font-feature-settings: "kern" 1;
           -o-font-feature-settings: "kern" 1;
           font-feature-settings: "kern" 1;
-          word-break: break-word;
-          overflow-wrap: break-word;
         }
 
         [style*="Noto Sans Tamil"] {
-          -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-          -moz-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-          -o-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-          font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-          word-break: break-word;
-          overflow-wrap: break-word;
-          -webkit-text-size-adjust: 100%;
-          text-rendering: optimizeLegibility;
-        }
-
-        /* Tamil-specific mobile optimizations */
-        @media (max-width: 640px) {
-          [style*="Noto Sans Tamil"] {
-            font-size: 110% !important;
-            letter-spacing: 0.01em;
-            word-spacing: 0.1em;
-          }
-          
-          [style*="Noto Sans Tamil"] .text-xs { font-size: 0.9rem !important; }
-          [style*="Noto Sans Tamil"] .text-sm { font-size: 1rem !important; }
-          [style*="Noto Sans Tamil"] .text-base { font-size: 1.125rem !important; }
-          [style*="Noto Sans Tamil"] .text-lg { font-size: 1.25rem !important; }
-          [style*="Noto Sans Tamil"] .text-xl { font-size: 1.375rem !important; }
-        }
-
-        /* Sinhala-specific mobile optimizations */
-        @media (max-width: 640px) {
-          [style*="Noto Sans Sinhala"] {
-            letter-spacing: 0.005em;
-          }
+          -webkit-font-feature-settings: "kern" 1;
+          -moz-font-feature-settings: "kern" 1;
+          -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
         }
 
         /* Improve mobile performance */
